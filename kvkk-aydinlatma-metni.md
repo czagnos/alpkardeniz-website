@@ -15,9 +15,9 @@
 
 - Ad-soyad
 - Telefon numarası
+- E-posta adresi
 - Teslimat adresi
 - Sipariş ve rezervasyon bilgileri
-- [varsa] E-posta adresi
 
 ## İşleme Amaçları
 
@@ -25,7 +25,7 @@
 - Teslimat süreçlerinin yürütülmesi
 - Müşteri ilişkileri ve talep/şikâyet yönetimi
 - Yasal yükümlülüklerin yerine getirilmesi
-- [varsa] Hizmet kalitesinin ölçülmesi ve iyileştirilmesi
+- Açık rıza vermeniz hâlinde kampanya ve duyuruların iletilmesi
 
 ## Hukuki Sebepler
 

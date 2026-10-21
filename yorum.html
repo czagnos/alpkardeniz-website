@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Bizi değerlendirir misiniz? · Alp Karadeniz Pidecisi</title>
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#FAF7F2">
+<style>
+  :root {
+    --cream: #FAF7F2;
+    --ink: #1C1C1A;
+    --ink-soft: #5C5A52;
+    --amber: #E8A020;
+    --walnut: #8B5E3C;
+    --green: #2D4A35;
+    --green-dark: #1B2E20;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; height: 100%; }
+  body {
+    background: var(--cream);
+    color: var(--ink);
+    font: 17px/1.45 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    -webkit-text-size-adjust: 100%;
+  }
+  .wrap {
+    min-height: 100vh;
+    min-height: 100svh;
+    max-width: 440px;
+    margin: 0 auto;
+    padding: max(20px, env(safe-area-inset-top)) 20px max(20px, env(safe-area-inset-bottom));
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 22px;
+  }
+  .lang {
+    position: absolute;
+    top: 0;
+    right: 0;
+    font-size: 16px;
+    color: var(--ink-soft);
+    background: none;
+    border: 0;
+    padding: 12px;
+    min-height: 48px;
+    cursor: pointer;
+    text-decoration: underline;
+  }
+  .inapp {
+    display: none;
+    background: #FCF1D8;
+    border: 1px solid #E8A020;
+    border-radius: 10px;
+    padding: 12px 14px;
+    font-size: 16px;
+  }
+  .inapp.show { display: block; }
+  .top { position: relative; padding-top: 44px; }
+  .logo { text-align: center; line-height: 1; }
+  .logo-name {
+    font: 700 1.75rem Georgia, "Times New Roman", serif;
+    letter-spacing: .01em;
+    white-space: nowrap;
+  }
+  .logo-name span { color: var(--amber); }
+  .logo-sub {
+    margin-top: 8px;
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: .32em;
+    text-transform: uppercase;
+    color: var(--walnut);
+  }
+  .logo-sub::before, .logo-sub::after { content: ""; width: 18px; height: 1px; background: var(--amber); }
+  h1 {
+    margin: 0;
+    text-align: center;
+    font: 700 1.75rem/1.2 Georgia, "Times New Roman", serif;
+  }
+  .lead { margin: -10px 0 0; text-align: center; color: var(--ink-soft); }
+  .cta {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    width: 100%;
+    min-height: 60px;
+    padding: 14px 18px;
+    border-radius: 14px;
+    background: var(--green);
+    color: #fff;
+    font-size: 19px;
+    font-weight: 700;
+    text-decoration: none;
+    box-shadow: 0 6px 18px rgba(45, 74, 53, .25);
+    -webkit-tap-highlight-color: transparent;
+  }
+  .cta:active { background: var(--green-dark); transform: translateY(1px); }
+  .cta:focus-visible, .fallback:focus-visible, .lang:focus-visible { outline: 3px solid var(--amber); outline-offset: 3px; }
+  .cta svg { flex: none; }
+  .steps { list-style: none; margin: -6px 0 0; padding: 0; display: grid; gap: 10px; }
+  .steps li { display: flex; align-items: center; gap: 12px; font-size: 16px; }
+  .steps .ico {
+    flex: none;
+    width: 36px; height: 36px;
+    border-radius: 50%;
+    background: #E4EBE5;
+    color: var(--green);
+    display: grid; place-items: center;
+  }
+  .fallback-row { text-align: center; font-size: 16px; color: var(--ink-soft); margin: 0; }
+  .fallback {
+    display: inline-block;
+    padding: 12px 4px;
+    color: var(--ink-soft);
+    text-decoration: underline;
+  }
+  @media (max-height: 640px) {
+    .wrap { gap: 16px; padding-top: max(12px, env(safe-area-inset-top)); }
+    h1 { font-size: 1.5rem; }
+    .is-inapp .logo-sub, .is-inapp .steps .ico { display: none; }
+    .is-inapp .top { padding-top: 0; }
+    .is-inapp .lang { display: none; }
+  }
+  @media (max-width: 360px) {
+    .cta { font-size: 17px; padding: 14px 12px; gap: 8px; }
+  }
+</style>
+</head>
+<body>
+<main class="wrap">
+  <div class="inapp" id="inapp" role="note" data-i18n="inapp">Sağ üstteki menüden <b>Tarayıcıda aç</b>'ı seçin, sonra butona dokunun.</div>
+
+  <div class="top">
+    <button class="lang" id="lang" type="button" lang="en">English</button>
+    <div class="logo" aria-label="Alp Karadeniz Pidecisi, 1970'ten beri">
+      <div class="logo-name">Alp <span>Karadeniz</span></div>
+      <div class="logo-sub">Pidecisi · Est. 1970</div>
+    </div>
+  </div>
+
+  <h1 data-i18n="title">Bizi değerlendirir misiniz?</h1>
+  <p class="lead" data-i18n="lead">Yorumunuz 1970'ten beri süren bu işi yaşatıyor.</p>
+
+  <a class="cta" id="cta-maps" href="https://www.google.com/maps/search/?api=1&amp;query=Alp+Karadeniz+Pidecisi">
+    <svg width="24" height="24" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2a7 7 0 0 0-7 7c0 5.2 7 13 7 13s7-7.8 7-13a7 7 0 0 0-7-7zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5z"/></svg>
+    <span data-i18n="cta">Google Maps'te Yorum Yaz</span>
+  </a>
+
+  <ol class="steps">
+    <li>
+      <span class="ico" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24"><path fill="currentColor" d="M4 5h16v2H4zm0 6h16v2H4zm0 6h10v2H4z"/></svg></span>
+      <span data-i18n="step1">1. Açılan sayfada <b>Yorumlar</b> sekmesine dokunun</span>
+    </li>
+    <li>
+      <span class="ico" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24"><path fill="currentColor" d="M12 17.3l6.2 3.7-1.6-7 5.4-4.7-7.1-.6L12 2 9.1 8.7 2 9.3l5.4 4.7-1.6 7z"/></svg></span>
+      <span data-i18n="step2">2. <b>Yorum yaz</b>'a dokunun ve yıldız verin</span>
+    </li>
+  </ol>
+
+  <p class="fallback-row">
+    <a class="fallback" id="link-direct" href="https://www.google.com/maps/search/?api=1&amp;query=Alp+Karadeniz+Pidecisi" data-i18n="fallback">Uygulama açılmadı mı? Buradan yazın</a>
+  </p>
+</main>
+
+<script>
+/* ===== TEK CONFIG NOKTASI =====
+ * Google linkleri değişirse yalnızca burayı güncelleyin; QR kodları aynı kalır.
+ * PLACE_ID: https://developers.google.com/maps/documentation/places/web-service/place-id
+ * adresindeki Place ID Finder'dan alınır, "ChIJ" ile başlar.
+ * STATS_URL: sayaç Worker'ının /e adresi (worker/README.md). Boşsa sayım yapılmaz.
+ */
+var PLACE_ID = "<PLACE_ID>"; // TODO: gerçek Place ID ile değiştirin
+var MAPS_APP_URL = "https://www.google.com/maps/search/?api=1&query=Alp+Karadeniz+Pidecisi&query_place_id=" + PLACE_ID;
+var DIRECT_REVIEW_URL = "https://search.google.com/local/writereview?placeid=" + PLACE_ID;
+var STATS_URL = ""; // örn. "https://alp-yorum-stats.<hesap>.workers.dev/e"
+/* ============================== */
+
+(function () {
+  var hasPlaceId = /^ChIJ/.test(PLACE_ID);
+  if (!hasPlaceId) console.warn("[yorum] PLACE_ID ayarlanmamış; linkler işletme adıyla arama yapıyor.");
+
+  // Linkler normal <a href>; yönlendirme yalnızca kullanıcı dokunuşuyla olur.
+  var maps = document.getElementById("cta-maps");
+  var direct = document.getElementById("link-direct");
+  if (hasPlaceId) {
+    maps.href = MAPS_APP_URL;
+    direct.href = DIRECT_REVIEW_URL;
+  }
+
+  var ua = navigator.userAgent || "";
+  var platform = /iPhone|iPad|iPod/.test(ua) || (/Macintosh/.test(ua) && navigator.maxTouchPoints > 1)
+    ? "iOS" : /Android/.test(ua) ? "Android" : "other";
+
+  // Uygulama içi tarayıcılar Maps uygulamasını genelde açamaz.
+  var inApp = /Instagram|FBAN|FBAV|FB_IAB|FBIOS|WhatsApp|Line\/|Twitter|Snapchat|TikTok|musical_ly|BytedanceWebview|LinkedInApp|Pinterest/i.test(ua);
+  if (inApp) {
+    document.getElementById("inapp").className += " show";
+    document.body.className += " is-inapp";
+  }
+
+  function track(name) {
+    if (!STATS_URL) return;
+    var body = JSON.stringify({ e: name, p: platform });
+    try {
+      if (navigator.sendBeacon && navigator.sendBeacon(STATS_URL, new Blob([body], { type: "text/plain" }))) return;
+    } catch (err) {}
+    try { fetch(STATS_URL, { method: "POST", body: body, keepalive: true, mode: "no-cors" }); } catch (err) {}
+  }
+
+  // Yalnızca ilk yükleme sayılır; Maps'ten geri dönüş (bfcache) yeni okutma değildir.
+  track("page_view");
+  maps.addEventListener("click", function () { track("click_maps_app"); });
+  direct.addEventListener("click", function () { track("click_direct_review"); });
+
+  // İsteğe bağlı İngilizce
+  var en = {
+    inapp: "Tap the menu at the top right and choose <b>Open in browser</b>, then tap the button.",
+    title: "Would you review us?",
+    lead: "Your review keeps a tradition going since 1970.",
+    cta: "Write a Review on Google Maps",
+    step1: "1. On the page that opens, tap the <b>Reviews</b> tab",
+    step2: "2. Tap <b>Write a review</b> and pick your stars",
+    fallback: "App didn't open? Write it here"
+  };
+  var nodes = document.querySelectorAll("[data-i18n]");
+  var tr = {};
+  for (var i = 0; i < nodes.length; i++) tr[nodes[i].getAttribute("data-i18n")] = nodes[i].innerHTML;
+  var lang = "tr";
+  var btn = document.getElementById("lang");
+  btn.addEventListener("click", function () {
+    lang = lang === "tr" ? "en" : "tr";
+    var dict = lang === "en" ? en : tr;
+    for (var i = 0; i < nodes.length; i++) nodes[i].innerHTML = dict[nodes[i].getAttribute("data-i18n")];
+    document.documentElement.lang = lang;
+    btn.textContent = lang === "en" ? "Türkçe" : "English";
+    btn.lang = lang === "en" ? "tr" : "en";
+  });
+})();
+</script>
+</body>
+</html>

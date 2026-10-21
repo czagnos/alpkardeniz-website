@@ -1,0 +1,11 @@
+name = "alp-yorum-stats"
+main = "src/index.js"
+compatibility_date = "2026-10-01"
+
+[vars]
+ALLOWED_ORIGINS = "https://alpkaradeniz.com,https://www.alpkaradeniz.com"
+
+[[d1_databases]]
+binding = "DB"
+database_name = "alp-yorum-stats"
+database_id = "<D1_DATABASE_ID>" # `wrangler d1 create alp-yorum-stats` çıktısından

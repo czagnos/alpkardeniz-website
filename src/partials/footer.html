@@ -1,0 +1,30 @@
+<footer class="site-footer">
+  <div class="site-footer__inner">
+    <span class="logo logo--dark"><span class="logo__name">Alp <span class="logo__yolk">Karadeniz</span></span><span class="logo__sub"><span class="logo__rule"></span>Pidecisi · Est. 1970<span class="logo__rule"></span></span></span>
+    <address class="site-footer__info">
+      <p class="site-footer__row">
+        <span>{{ site.name }}</span>
+        <span class="site-footer__sep" aria-hidden="true">·</span>
+        <span>{{ site.addressDisplay }}</span>
+        <span class="site-footer__sep" aria-hidden="true">·</span>
+        <span>Her gün 11:00–22:00</span>
+      </p>
+      <p class="site-footer__row">
+        <a href="mailto:{{ site.email }}">{{ site.email }}</a>
+        <span class="site-footer__sep" aria-hidden="true">·</span>
+        <a href="{{ site.telephoneHref }}">{{ site.telephone }}</a>
+        <span class="site-footer__sep" aria-hidden="true">·</span>
+        <a href="{{ site.mapsUrl }}" target="_blank" rel="noopener">Google Maps</a>
+        <span class="site-footer__sep" aria-hidden="true">·</span>
+        <a href="{{ site.instagram }}" target="_blank" rel="noopener">Instagram</a>
+        <span class="site-footer__sep" aria-hidden="true">·</span>
+        <a href="/kvkk-aydinlatma-metni" data-kvkk-open="aydinlatma">KVKK Aydınlatma Metni</a>
+        <span class="site-footer__sep" aria-hidden="true">·</span>
+        <a href="/kvkk-acik-riza-beyani" data-kvkk-open="riza">Açık Rıza</a>
+      </p>
+    </address>
+  </div>
+</footer>
+<script src="{{@ asset /assets/js/kvkk.js }}" defer></script>
+{{{ bodyEnd }}}</body>
+</html>

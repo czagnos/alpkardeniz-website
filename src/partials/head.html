@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+{{{ headStart }}}<title>{{ page.title }}</title>
+<meta name="description" content="{{ page.description }}">
+<link rel="canonical" href="{{ canonical }}">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="tr_TR">
+<meta property="og:site_name" content="{{ site.name }}">
+<meta property="og:title" content="{{ page.title }}">
+<meta property="og:description" content="{{ page.description }}">
+<meta property="og:url" content="{{ canonical }}">
+<meta property="og:image" content="{{ site.url }}/assets/img/og-image.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Alp Karadeniz Pidecisi salonu — ceviz masalar, yeşil sandalyeler">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="{{ page.title }}">
+<meta name="twitter:description" content="{{ page.description }}">
+<meta name="twitter:image" content="{{ site.url }}/assets/img/og-image.jpg">
+<meta name="theme-color" content="#1B2E20">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+{{@ preload }}<link rel="preload" href="/assets/fonts/inter.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/assets/fonts/playfair-display.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="{{@ asset /assets/css/site.css }}">
+{{@ jsonld }}
+</head>
+<body>
+<a class="skip-link" href="#icerik">İçeriğe geç</a>

@@ -1,0 +1,80 @@
+<!--
+{
+  "path": "/",
+  "nav": "home",
+  "title": "Alp Karadeniz Pidecisi — Bakırköy · Est. 1970",
+  "description": "1970'ten beri Bakırköy'de Karadeniz pidesi. İnce hamur, saf içerik ve yarım asırlık zanaat: Alp Karadeniz Pidecisi her gün 11:00–22:00 arası açık.",
+  "preload": { "img": "salon", "sizes": "100vw" }
+}
+-->
+<!--@head-->
+<script>
+/* Eski tek sayfa sürümünün hash linkleri (Instagram bio, QR) yeni URL'lere gider. */
+(function(){var m={"menu":"/menu","menü":"/menu","hikayemiz":"/hikayemiz","rezervasyon":"/rezervasyon","reserve":"/rezervasyon"};var h="";try{h=decodeURIComponent(location.hash.replace(/^#\/?/,"")).toLowerCase()}catch(e){}if(m[h])location.replace(m[h]+location.search)})();
+</script>
+<!--@endhead-->
+{{> header }}
+<main id="icerik">
+
+  <section class="hero">
+    <img data-img="salon" data-eager class="hero__img" sizes="100vw" alt="Alp Karadeniz Pidecisi salonu — ceviz masalar, yeşil sandalyeler, ağaca bakan pencere">
+    <div class="hero__shade"></div>
+    <div class="hero__inner">
+      <div class="hero__content">
+        <div class="kicker">
+          <span class="hero__kicker-rule"></span>
+          <span class="hero__kicker-text">Est. 1970 · Bakırköy</span>
+        </div>
+        <h1 class="hero__title">1970'ten bugüne, Bakırköy'de bir <em>Karadeniz geleneği</em>.</h1>
+        <p class="hero__lead">İnce hamur, saf içerik ve yarım asırlık bir zanaat.</p>
+        <div class="hero__cta">
+          <a class="btn btn--amber btn--lg" href="/rezervasyon">Rezervasyon Yap</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="intro">
+    <div class="intro__text">
+      <div class="section-heading">
+        <span class="section-heading__eyebrow"><span class="section-heading__rule"></span>1970'ten beri</span>
+        <h2 class="section-heading__title">Fırından sofraya</h2>
+      </div>
+      <p class="intro__quote">"Tirebolu'dan Bakırköy'e uzanan köklerimizle, Karadeniz'in asırlık pide kültürünü en yalın haliyle masanıza konuk ediyoruz."</p>
+      <a class="text-link" href="/hikayemiz">Hikayemizi Oku →</a>
+    </div>
+    <img data-img="usta-hamur" class="intro__img" sizes="(min-width: 1240px) 556px, (min-width: 768px) calc((100vw - 128px) / 2), calc(100vw - 56px)" alt="Usta unlu tezgahta pide hamuru açarken">
+  </section>
+
+  <section class="gallery" aria-label="Fotoğraflar">
+    <div class="gallery__inner">
+      <div class="gallery__grid">
+        <div class="gallery__col gallery__col--2">
+          <img data-img="tereyagi-firca" class="r-3-4" sizes="{{ gallerySizes }}" alt="Usta uzun pidelerin üzerine fırçayla tereyağı sürerken">
+          <img data-img="pide-tepsiler" class="r-4-5" sizes="{{ gallerySizes }}" alt="Tepsilerde pide çeşitleri — üstten">
+          <img data-img="firin-sutlac" class="r-1-1 is-small is-end" sizes="{{ gallerySizes }}" alt="Fırın sütlaç — güveçte, fındıklı">
+          <img data-img="yumurtali-kavurmali-yakin" class="r-3-4" sizes="{{ gallerySizes }}" alt="Yumurtalı kavurmalı pide — yakın çekim">
+        </div>
+        <div class="gallery__col">
+          <img data-img="kavurmali-pide-tabak" class="r-3-4" sizes="{{ gallerySizes }}" alt="Kavurmalı pide, yumurta sarısıyla — ahşap tabakta">
+          <img data-img="kapali-pide-sepet" class="r-16-10" sizes="{{ gallerySizes }}" alt="Kapalı pideler — hasır sepette">
+          <img data-img="firindan-cikaris" class="r-3-4" sizes="{{ gallerySizes }}" alt="Usta pideyi tahta kürekle fırından çıkarırken">
+          <img data-img="sucuklu-kasarli" class="r-1-1 is-small" sizes="{{ gallerySizes }}" alt="Sucuklu kaşarlı pide — üstten">
+          <img data-img="kavurmali-acik-tepsi" class="r-2-3" sizes="{{ gallerySizes }}" alt="Kavurmalı açık pide — uzun, metal tepside, ahşap masada">
+        </div>
+        <div class="gallery__col gallery__col--3">
+          <img data-img="kapali-pide-tugla" class="r-3-4" sizes="{{ gallerySizes }}" alt="Kapalı pide — metal tepside, tuğla duvar önünde">
+          <img data-img="mantarli-kasarli" class="r-3-4" sizes="{{ gallerySizes }}" alt="Mantarlı kaşarlı pide — üstten">
+          <img data-img="dilimli-pideler" class="r-4-5" sizes="{{ gallerySizes }}" alt="Tepsilerde dilimlenmiş pide çeşitleri — üstten">
+          <img data-img="kavurmali-yumurtali-tabak" class="r-3-4 is-small is-end" sizes="{{ gallerySizes }}" alt="Kavurmalı yumurtalı pide — beyaz tabakta">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="band">
+    <img data-img="kemerli-nisler" class="cover" sizes="100vw" alt="Kemerli nişler, ceviz duvarlar ve yeşil deri sandalyeler">
+  </section>
+
+</main>
+{{> footer }}

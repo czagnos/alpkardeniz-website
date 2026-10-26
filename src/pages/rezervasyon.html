@@ -1,0 +1,131 @@
+<!--
+{
+  "path": "/rezervasyon",
+  "nav": "reserve",
+  "title": "Rezervasyon — Alp Karadeniz Pidecisi, Bakırköy",
+  "description": "Bakırköy'de Karadeniz pidesi sofranızı önceden ayırtın. Alp Karadeniz Pidecisi'ne online rezervasyon talebi gönderin ya da (212) 572-7646'yı arayın.",
+  "preload": { "img": "pide-sofrasi", "sizes": "(min-width: 1100px) 494px, (min-width: 712px) calc((100vw - 112px) / 2), calc(100vw - 56px)" }
+}
+-->
+<!--@head-->
+<link rel="preconnect" href="https://challenges.cloudflare.com">
+<!--@endhead-->
+<!--@body-->
+<script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
+<script src="{{@ asset /assets/js/rezervasyon.js }}" defer></script>
+<!--@endbody-->
+{{> header }}
+<main id="icerik">
+
+  <div class="reserve__head page-head">
+    <div class="kicker">
+      <span class="kicker__rule"></span>
+      <span class="kicker__text">Est. 1970 · Bakırköy</span>
+      <span class="kicker__rule"></span>
+    </div>
+    <h1 class="page-title">Rezervasyon</h1>
+    <p class="reserve__intro">Sofranızı önceden ayırtın; hafta sonları yer ayırtmanızı öneririz. Talebinizi aldıktan sonra kısa sürede dönüş yaparız.</p>
+  </div>
+
+  <section class="reserve">
+    <div class="reserve__grid">
+
+      <div class="reserve__aside">
+        <img data-img="pide-sofrasi" data-eager class="reserve__img" sizes="(min-width: 1100px) 494px, (min-width: 712px) calc((100vw - 112px) / 2), calc(100vw - 56px)" alt="Pide sofrası — üstten çekim, çeşitli pideler ve çay">
+
+        <div class="contact">
+          <div class="contact__item">
+            <span class="contact__label">Telefon</span>
+            <a class="contact__phone" href="{{ site.telephoneHref }}">{{ site.telephoneLocal }}</a>
+          </div>
+          <span class="contact__rule"></span>
+          <div class="contact__item">
+            <span class="contact__label">Adres</span>
+            <p class="contact__value"><a href="{{ site.mapsUrl }}" target="_blank" rel="noopener">{{ site.addressDisplay }}</a></p>
+          </div>
+          <span class="contact__rule"></span>
+          <div class="contact__item">
+            <span class="contact__label">Çalışma Saatleri</span>
+            <p class="contact__value">{{ site.hoursDisplay }}</p>
+          </div>
+        </div>
+      </div>
+
+      <form id="rezervasyon-formu" class="rform">
+        <div class="rform__full field">
+          <label class="field__label" for="ad-soyad">Ad Soyad<span class="field__req"> *</span></label>
+          <input class="field__input" id="ad-soyad" name="customerName" type="text" placeholder="Adınız Soyadınız" autocomplete="name" required>
+        </div>
+        <div class="field">
+          <label class="field__label" for="telefon">Telefon<span class="field__req"> *</span></label>
+          <input class="field__input" id="telefon" name="phone" type="tel" placeholder="05xx xxx xx xx" autocomplete="tel" required>
+        </div>
+        <div class="field">
+          <label class="field__label" for="e-posta">E-posta</label>
+          <input class="field__input" id="e-posta" name="email" type="email" placeholder="ornek@eposta.com" autocomplete="email">
+        </div>
+        <div class="field">
+          <label class="field__label" for="tarih">Tarih<span class="field__req"> *</span></label>
+          <input class="field__input" id="tarih" name="date" type="date" required>
+        </div>
+        <div class="rform__pair">
+          <div class="field">
+            <label class="field__label" for="saat">Saat <span class="field__req"> *</span></label>
+            <select class="field__select" id="saat" name="time" required>
+                <option value="11:00">11:00</option>
+                <option value="11:30">11:30</option>
+                <option value="12:00">12:00</option>
+                <option value="12:30">12:30</option>
+                <option value="13:00">13:00</option>
+                <option value="13:30">13:30</option>
+                <option value="14:00">14:00</option>
+                <option value="14:30">14:30</option>
+                <option value="15:00">15:00</option>
+                <option value="15:30">15:30</option>
+                <option value="16:00">16:00</option>
+                <option value="16:30">16:30</option>
+                <option value="17:00">17:00</option>
+                <option value="17:30">17:30</option>
+                <option value="18:00">18:00</option>
+                <option value="18:30">18:30</option>
+                <option value="19:00">19:00</option>
+                <option value="19:30" selected>19:30</option>
+                <option value="20:00">20:00</option>
+                <option value="20:30">20:30</option>
+                <option value="21:00">21:00</option>
+                <option value="21:30">21:30</option>
+                <option value="22:00">22:00</option>
+            </select>
+          </div>
+          <div class="field">
+            <label class="field__label" for="kisi">Kişi<span class="field__req"> *</span></label>
+            <input class="field__input" id="kisi" name="partySize" type="number" value="2" min="1" max="12" inputmode="numeric" required>
+          </div>
+        </div>
+        <div class="rform__full field">
+          <label class="field__label" for="not">Not <span class="field__opt">(opsiyonel)</span></label>
+          <textarea class="field__textarea" id="not" name="note" placeholder="Özel bir isteğiniz var mı? (doğum günü, oturma tercihi…)" rows="3"></textarea>
+        </div>
+        <div class="rform__consent">
+          <label class="rform__check">
+            <input type="checkbox" id="akp-marketing" name="marketingConsent">
+            <span>Kampanya, indirim ve duyurulardan <strong>SMS / e-posta</strong> ile haberdar olmak istiyorum. <em>(İsteğe bağlı; rezervasyon için zorunlu değildir.)</em></span>
+          </label>
+          <p class="rform__legal">Rezervasyon talebinizi göndererek <a href="/kvkk-aydinlatma-metni" data-kvkk-open="aydinlatma">KVKK Aydınlatma Metni</a>&rsquo;ni okuduğunuzu kabul edersiniz. Pazarlama izni hakkında: <a href="/kvkk-acik-riza-beyani" data-kvkk-open="riza">Açık Rıza Beyanı</a>.</p>
+        </div>
+        <div id="ak-turnstile" class="rform__turnstile" data-sitekey="{{ site.turnstileSiteKey }}"></div>
+        <div class="rform__submit">
+          <button class="btn btn--primary btn--lg" type="submit">Rezervasyon Talebi Gönder</button>
+        </div>
+        <p class="rform__fine">Talebiniz onaylandığında telefonla bilgilendirileceksiniz.</p>
+      </form>
+
+    </div>
+  </section>
+
+  <section class="band band--reserve">
+    <img data-img="kemerli-nisler" class="cover" sizes="100vw" alt="Kemerli nişler, ceviz duvarlar ve yeşil deri sandalyeler">
+  </section>
+
+</main>
+{{> footer }}

@@ -10,7 +10,7 @@ alpkaradeniz.com — GitHub Pages üzerinde yayınlanan statik site.
 
 | Yol | Ne |
 | --- | --- |
-| `src/pages/*.html` | Sayfa kaynakları (`/`, `/menu`, `/hikayemiz`, `/rezervasyon`) |
+| `src/pages/*.html` | Sayfa kaynakları (`/`, `/menu`, `/hikayemiz`, `/rezervasyon`, `/iletisim`) |
 | `src/partials/` | Ortak `<head>`, header ve footer |
 | `src/data/site.json` | İşletme bilgileri (adres, telefon, saatler, linkler) — footer ve JSON-LD buradan |
 | `src/data/menu.json` | Menü ve fiyatlar — hem görünen menü hem `Menu` JSON-LD buradan |

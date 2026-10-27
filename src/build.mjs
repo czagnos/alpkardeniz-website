@@ -23,6 +23,9 @@ const site = readJson('data/site.json');
 const menu = readJson('data/menu.json');
 const images = readJson('data/images.json');
 
+// Yol tarifi (Google Maps URLs): place_id öncelikli, koordinat yedek
+site.directionsUrl = `https://www.google.com/maps/dir/?api=1&destination=${site.geo.latitude},${site.geo.longitude}&destination_place_id=${site.googlePlaceId}`;
+
 const esc = (s) => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
 const get = (ctx, path) => path.split('.').reduce((o, k) => (o == null ? undefined : o[k]), ctx);
 const imgPath = (name, w) => `/assets/img/${name}-${w}.webp`;
@@ -131,9 +134,21 @@ function menuLd() {
   };
 }
 
+function contactLd(page) {
+  return {
+    '@type': 'ContactPage',
+    '@id': `${site.url}${page.path}#webpage`,
+    url: site.url + page.path,
+    name: page.title,
+    inLanguage: 'tr',
+    mainEntity: { '@id': `${site.url}/#restaurant` },
+  };
+}
+
 function jsonLd(page) {
   const graph = [restaurantLd()];
   if (page.menuJsonLd) graph.push(menuLd());
+  if (page.contactJsonLd) graph.push(contactLd(page));
   const json = JSON.stringify({ '@context': 'https://schema.org', '@graph': graph }, null, 2).replace(/</g, '\\u003c');
   return `<script type="application/ld+json">\n${json}\n</script>`;
 }
@@ -207,7 +222,7 @@ for (const file of readdirSync(join(SRC, 'pages')).filter((f) => f.endsWith('.ht
   console.log(`${file}  ${(Buffer.byteLength(html) / 1024).toFixed(1)} KB`);
 }
 
-const order = ['/', '/menu', '/hikayemiz', '/rezervasyon'].map((p) => site.url + p);
+const order = ['/', '/menu', '/hikayemiz', '/rezervasyon', '/iletisim'].map((p) => site.url + p);
 sitemapEntries.sort((a, b) => order.indexOf(a.loc) - order.indexOf(b.loc));
 writeFileSync(sitemapPath, `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">

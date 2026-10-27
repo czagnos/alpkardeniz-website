@@ -14,3 +14,4 @@
 - [Menü ve fiyatlar](https://alpkaradeniz.com/menu): pide çeşitleri, çorba ve tatlı, TL fiyatlarıyla
 - [Hikayemiz](https://alpkaradeniz.com/hikayemiz): Tirebolu'dan Bakırköy'e, 1970'ten bugüne
 - [Rezervasyon](https://alpkaradeniz.com/rezervasyon): online rezervasyon talebi
+- [İletişim](https://alpkaradeniz.com/iletisim): adres, telefon, e-posta, çalışma saatleri ve yol tarifi

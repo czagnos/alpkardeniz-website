@@ -15,7 +15,7 @@
     "widths": [
       480,
       720,
-      960
+      1001
     ]
   },
   "tereyagi-firca": {
@@ -24,7 +24,7 @@
     "widths": [
       480,
       720,
-      960
+      1000
     ]
   },
   "pide-tepsiler": {
@@ -33,7 +33,7 @@
     "widths": [
       480,
       720,
-      960
+      1001
     ]
   },
   "firin-sutlac": {
@@ -42,7 +42,7 @@
     "widths": [
       480,
       720,
-      960
+      1000
     ]
   },
   "yumurtali-kavurmali-yakin": {
@@ -51,7 +51,7 @@
     "widths": [
       480,
       720,
-      960
+      1000
     ]
   },
   "kavurmali-pide-tabak": {
@@ -60,7 +60,7 @@
     "widths": [
       480,
       720,
-      960
+      1000
     ]
   },
   "kapali-pide-sepet": {
@@ -69,7 +69,7 @@
     "widths": [
       480,
       720,
-      960
+      1000
     ]
   },
   "firindan-cikaris": {
@@ -78,7 +78,7 @@
     "widths": [
       480,
       720,
-      960
+      1001
     ]
   },
   "sucuklu-kasarli": {
@@ -87,7 +87,7 @@
     "widths": [
       480,
       720,
-      960
+      1001
     ]
   },
   "kavurmali-acik-tepsi": {
@@ -96,7 +96,7 @@
     "widths": [
       480,
       720,
-      960
+      1000
     ]
   },
   "kapali-pide-tugla": {
@@ -105,7 +105,7 @@
     "widths": [
       480,
       720,
-      960
+      1000
     ]
   },
   "mantarli-kasarli": {
@@ -114,7 +114,7 @@
     "widths": [
       480,
       720,
-      960
+      1000
     ]
   },
   "dilimli-pideler": {
@@ -123,7 +123,7 @@
     "widths": [
       480,
       720,
-      960
+      1000
     ]
   },
   "kavurmali-yumurtali-tabak": {
@@ -132,7 +132,7 @@
     "widths": [
       480,
       720,
-      960
+      1000
     ]
   },
   "kemerli-nisler": {
@@ -151,7 +151,7 @@
     "widths": [
       480,
       720,
-      960
+      1000
     ]
   },
   "pide-sofrasi": {
@@ -160,7 +160,14 @@
     "widths": [
       480,
       720,
-      960
+      1000
+    ]
+  },
+  "salon-dikey": {
+    "width": 621,
+    "height": 1001,
+    "widths": [
+      621
     ]
   }
 }

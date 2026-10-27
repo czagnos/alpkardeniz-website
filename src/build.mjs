@@ -8,7 +8,7 @@
 //   {{> header }}                   src/partials/header.html
 //   {{@ menu }}, {{@ jsonld }}, {{@ preload }}, {{@ asset /yol }}   üretilen bloklar
 //   <img data-img="ad" sizes="…">   src/data/images.json'dan srcset/width/height eklenir;
-//                                   data-eager yoksa loading="lazy" olur
+//                                   data-eager yoksa loading="lazy" olur (<source data-img> da desteklenir)
 //   <!--@head-->…<!--@endhead-->    <head> sonuna eklenir; <!--@body-->…<!--@endbody--> </body> öncesine
 import { readFileSync, writeFileSync, readdirSync, existsSync } from 'node:fs';
 import { createHash } from 'node:crypto';
@@ -39,6 +39,14 @@ function srcset(name) {
   const meta = images[name];
   if (!meta) throw new Error(`images.json'da yok: ${name}`);
   return meta.widths.map((w) => `${imgPath(name, w)} ${w}w`).join(', ');
+}
+
+// <picture> içindeki <source data-img="ad" media="…" sizes="…">: yalnızca srcset ve boyut eklenir
+function expandSource(tag) {
+  const name = tag.match(/data-img="([^"]+)"/)[1];
+  const meta = images[name];
+  if (!meta) throw new Error(`images.json'da yok: ${name}`);
+  return tag.replace(/\sdata-img="[^"]+"/, '').replace(/^<source/, `<source srcset="${srcset(name)}" width="${meta.width}" height="${meta.height}"`);
 }
 
 function expandImg(tag) {
@@ -155,8 +163,8 @@ function jsonLd(page) {
 
 function preload(page) {
   if (!page.preload) return '';
-  const { img, sizes } = page.preload;
-  return `<link rel="preload" as="image" type="image/webp" imagesrcset="${srcset(img)}" imagesizes="${sizes}" fetchpriority="high">\n`;
+  return [].concat(page.preload).map(({ img, sizes, media }) =>
+    `<link rel="preload" as="image" type="image/webp" imagesrcset="${srcset(img)}" imagesizes="${sizes}"${media ? ` media="${media}"` : ''} fetchpriority="high">\n`).join('');
 }
 
 function render(tpl, ctx) {
@@ -181,7 +189,9 @@ function render(tpl, ctx) {
     if (v === undefined) throw new Error(`tanımsız değer: ${p}`);
     return esc(v);
   });
-  return out.replace(/<img\b[^>]*\bdata-img="[^"]+"[^>]*>/g, expandImg);
+  return out
+    .replace(/<source\b[^>]*\bdata-img="[^"]+"[^>]*>/g, expandSource)
+    .replace(/<img\b[^>]*\bdata-img="[^"]+"[^>]*>/g, expandImg);
 }
 
 const GALLERY_SIZES = '(min-width: 1240px) 379px, (min-width: 884px) calc((100vw - 104px) / 3), (min-width: 600px) calc((100vw - 80px) / 2), calc(100vw - 56px)';

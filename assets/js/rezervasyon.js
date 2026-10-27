@@ -44,13 +44,15 @@
     var dateVal = v(byId('tarih'));
     var timeVal = v(byId('saat'));
     var marketing = byId('akp-marketing');
+    // Seçilen saat İstanbul saatidir (2016'dan beri yıl boyu UTC+3). Backend UTC bekliyor:
+    // 19:30 -> "…T16:30:00.000Z". Eskiden '…T19:30:00.000Z' gidiyordu ve panelde 3 saat ileri görünüyordu.
+    var when = (dateVal && timeVal) ? new Date(dateVal + 'T' + timeVal + ':00+03:00') : null;
     var payload = {
       customerName: v(byId('ad-soyad')),
       phone: v(byId('telefon')),
       email: v(byId('e-posta')),
       partySize: parseInt(v(byId('kisi')), 10) || 1,
-      // Not: yerel saat 'Z' (UTC) ekiyle gönderiliyor; eski sürümle aynı bırakıldı.
-      reservationTime: (dateVal && timeVal) ? (dateVal + 'T' + timeVal + ':00.000Z') : '',
+      reservationTime: (when && !isNaN(when.getTime())) ? when.toISOString() : '',
       note: v(byId('not')),
       turnstileToken: token,
       marketingConsent: !!(marketing && marketing.checked),

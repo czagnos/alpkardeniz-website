@@ -13,8 +13,10 @@
     "addressCountry": "TR"
   },
   "addressDisplay": "Cevizlik, Hüsreviye Sk. No: 34, 34142 Bakırköy/İstanbul",
-  "geo": null,
-  "_todo_geo": "TODO(Can): Google İşletme Profili'ndeki enlem/boylamı yaz, örn. {\"latitude\": 40.0, \"longitude\": 28.0}. null kaldıkça JSON-LD'de geo alanı çıkmaz.",
+  "geo": {
+    "latitude": 40.980491795696366,
+    "longitude": 28.874836517985756
+  },
   "mapsUrl": "https://maps.app.goo.gl/pJgyAfVphbogkUYo7",
   "googlePlaceId": "ChIJ29LnMaS8yhQRA-uoAEW4944",
   "instagram": "https://www.instagram.com/alpkaradenizpidecisi/",
@@ -22,6 +24,9 @@
   "opens": "11:00",
   "closes": "22:00",
   "foundingDate": "1970",
-  "servesCuisine": ["Karadeniz mutfağı", "Pide"],
+  "servesCuisine": [
+    "Karadeniz mutfağı",
+    "Pide"
+  ],
   "turnstileSiteKey": "0x4AAAAAADqTXiFLT_IYzDpI"
 }

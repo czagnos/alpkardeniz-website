@@ -1,3 +1,9 @@
+---
+layout: default
+title: "KVKK Aydınlatma Metni — Alp Karadeniz Pidecisi"
+description: "Alp Karadeniz Pidecisi'nin 6698 sayılı KVKK kapsamında kişisel verilerin işlenmesine ilişkin aydınlatma metni."
+---
+
 # Alp Karadeniz Pidecisi Kişisel Verilerin Korunması ve İşlenmesi Aydınlatma Metni
 
 > ⚠️ Bu bir başlangıç taslağıdır. Yayınlamadan önce mutlaka bir KVKK danışmanına/avukata kontrol ettirin.

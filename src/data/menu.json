@@ -2,7 +2,7 @@
   "currency": "TRY",
   "sections": [
     {
-      "title": "PİDE ÇEŞİTLERİ",
+      "title": "Pide Çeşitleri",
       "note": "Yumurta ilavesi +25",
       "items": [
         { "name": "Yağlı", "price": 360 },
@@ -27,14 +27,14 @@
       ]
     },
     {
-      "title": "ÇORBALAR",
+      "title": "Çorbalar",
       "note": "",
       "items": [
         { "name": "Mercimek Çorbası", "price": 100 }
       ]
     },
     {
-      "title": "TATLILAR",
+      "title": "Tatlılar",
       "note": "",
       "items": [
         { "name": "Fırın Sütlaç", "price": 160 }

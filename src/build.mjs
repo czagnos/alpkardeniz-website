@@ -1,6 +1,7 @@
 // Statik site üreticisi — bağımlılık yok. Çalıştır: node src/build.mjs
 //
 // src/pages/*.html  ->  kök dizinde aynı adlı .html (çıktı commit'lenir)
+// src/layouts/default.html  ->  _layouts/default.html (KVKK .md sayfaları için Jekyll layout'u)
 //
 // Sayfa sözdizimi:
 //   <!-- { ...json... } -->         dosyanın başında sayfa ayarları (path, nav, title, description)
@@ -10,7 +11,7 @@
 //   <img data-img="ad" sizes="…">   src/data/images.json'dan srcset/width/height eklenir;
 //                                   data-eager yoksa loading="lazy" olur (<source data-img> da desteklenir)
 //   <!--@head-->…<!--@endhead-->    <head> sonuna eklenir; <!--@body-->…<!--@endbody--> </body> öncesine
-import { readFileSync, writeFileSync, readdirSync, existsSync } from 'node:fs';
+import { readFileSync, writeFileSync, readdirSync, existsSync, mkdirSync } from 'node:fs';
 import { createHash } from 'node:crypto';
 import { join, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
@@ -69,10 +70,11 @@ const fmtPrice = (n) => String(n);
 
 function menuHtml() {
   return menu.sections.map((sec) => {
-    const items = sec.items.map((it) => `      <li class="menu-item">
+    const items = sec.items.map((it) => `      <li class="menu-item${it.description ? ' menu-item--desc' : ''}">
         <span class="menu-item__name">${esc(it.name)}</span>
         <span class="menu-item__dots" aria-hidden="true"></span>
-        <span class="menu-item__price">${fmtPrice(it.price)}<span class="visually-hidden"> TL</span></span>
+        <span class="menu-item__price">${fmtPrice(it.price)}<span class="visually-hidden"> TL</span></span>${it.description ? `
+        <span class="menu-item__desc">${esc(it.description)}</span>` : ''}
       </li>`).join('\n');
     const note = sec.note ? `\n    <p class="menu-section__note">${esc(sec.note)}</p>` : '';
     return `  <section class="menu-section">
@@ -136,6 +138,7 @@ function menuLd() {
       hasMenuItem: sec.items.map((it) => ({
         '@type': 'MenuItem',
         name: it.name,
+        ...(it.description ? { description: it.description } : {}),
         offers: { '@type': 'Offer', price: String(it.price), priceCurrency: menu.currency },
       })),
     })),
@@ -230,6 +233,25 @@ for (const file of readdirSync(join(SRC, 'pages')).filter((f) => f.endsWith('.ht
   writeFileSync(outPath, html);
   sitemapEntries.push({ loc: ctx.canonical, lastmod: (!changed && oldLastmod(ctx.canonical)) || today });
   console.log(`${file}  ${(Buffer.byteLength(html) / 1024).toFixed(1)} KB`);
+}
+
+// Jekyll layout'u (_layouts/default.html): KVKK .md sayfaları aynı head/header/footer ile açılsın.
+// Başlık, açıklama, adres ve içerik sayfanın front matter'ından Liquid ile gelir.
+{
+  const mark = (k) => `\u0001${k}\u0001`;
+  const page = { title: mark('title'), description: mark('description'), path: mark('path') };
+  const ctx = { site, page, nav: {}, bodyEnd: '', canonical: site.url + page.path, gallerySizes: GALLERY_SIZES, headStart: '' };
+  const tpl = readFileSync(join(SRC, 'partials', 'head.html'), 'utf8') + readFileSync(join(SRC, 'layouts', 'default.html'), 'utf8');
+  const html = render(tpl, ctx)
+    .replaceAll(mark('title'), '{{ page.title | escape }}')
+    .replaceAll(mark('description'), '{{ page.description | escape }}')
+    .replaceAll(mark('path'), "{{ page.url | remove: '.html' }}")
+    .replace('<!--@content-->', '{{ content }}');
+  const liquid = html.match(/\{\{.*?\}\}|\{%.*?%\}/g);
+  if (liquid.some((t) => !/^\{\{ (page\.|content)/.test(t))) throw new Error(`layout'ta beklenmeyen Liquid: ${liquid}`);
+  mkdirSync(join(ROOT, '_layouts'), { recursive: true });
+  writeFileSync(join(ROOT, '_layouts', 'default.html'), html);
+  console.log(`_layouts/default.html  ${(Buffer.byteLength(html) / 1024).toFixed(1)} KB`);
 }
 
 const order = ['/', '/menu', '/hikayemiz', '/rezervasyon', '/iletisim'].map((p) => site.url + p);

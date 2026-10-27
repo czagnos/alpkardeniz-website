@@ -1,9 +1,8 @@
-/* KVKK bilgilendirme bandı ve Aydınlatma / Açık Rıza penceresi.
-   Metinler kök dizindeki kvkk-*.md dosyalarıyla aynı içeriktedir. JS yoksa
-   [data-kvkk-open] linkleri doğrudan bu .md sayfalarına gider. */
+/* KVKK Aydınlatma / Açık Rıza penceresi (yalnızca rezervasyon sayfasında yüklenir).
+   Metinler kök dizindeki kvkk-*.md sayfalarıyla aynı içeriktedir. JS yoksa
+   [data-kvkk-open] linkleri doğrudan bu sayfalara gider. */
 (function(){
   "use strict";
-  var LS_KEY = "akp-kvkk-ack-v1";
 
   var AYDINLATMA = `
     <h1>Kişisel Verilerin Korunması ve İşlenmesi Aydınlatma Metni</h1>
@@ -99,15 +98,4 @@
     if(t){ e.preventDefault(); openModal(t.getAttribute("data-kvkk-open")); }
   });
   document.addEventListener("keydown", function(e){ if(e.key==="Escape") closeModal(); });
-
-  function showBanner(){
-    var done=false; try{ done=!!localStorage.getItem(LS_KEY); }catch(e){}
-    if(done || document.getElementById("akp-kvkk-banner")) return;
-    var b=el("div"); b.id="akp-kvkk-banner";
-    b.setAttribute("role","region"); b.setAttribute("aria-label","KVKK bilgilendirmesi");
-    b.innerHTML='<div class="akp-kvkk-binner"><p>Web sitemizde, rezervasyon taleplerinizi karşılamak ve hizmetlerimizi sunmak için kişisel verilerinizi 6698 sayılı KVKK kapsamında işliyoruz. Ayrıntılar için <a href="/kvkk-aydinlatma-metni" data-kvkk-open="aydinlatma">Aydınlatma Metni</a>&rsquo;ni inceleyebilirsiniz.</p><div class="akp-kvkk-bactions"><button type="button" class="akp-ghost" data-kvkk-open="aydinlatma">İncele</button><button type="button" id="akp-kvkk-accept" class="akp-primary">Kabul Ediyorum</button></div></div>';
-    document.body.appendChild(b);
-    document.getElementById("akp-kvkk-accept").addEventListener("click", function(){ try{ localStorage.setItem(LS_KEY, new Date().toISOString()); }catch(e){} b.remove(); });
-  }
-  showBanner();
 })();

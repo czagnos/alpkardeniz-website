@@ -12,19 +12,20 @@ alpkaradeniz.com — GitHub Pages üzerinde yayınlanan statik site.
 | --- | --- |
 | `src/pages/*.html` | Sayfa kaynakları (`/`, `/menu`, `/hikayemiz`, `/rezervasyon`, `/iletisim`) |
 | `src/partials/` | Ortak `<head>`, header ve footer |
+| `src/layouts/default.html` | KVKK `.md` sayfalarının Jekyll layout kaynağı; build `_layouts/default.html`'i üretir |
 | `src/data/site.json` | İşletme bilgileri (adres, telefon, saatler, linkler) — footer ve JSON-LD buradan |
-| `src/data/menu.json` | Menü ve fiyatlar — hem görünen menü hem `Menu` JSON-LD buradan |
+| `src/data/menu.json` | Menü, fiyatlar ve isteğe bağlı `description` — hem görünen menü hem `Menu` JSON-LD buradan |
 | `src/data/images.json` | Görsel boyutları (`tools/optimize-images.py` üretir) |
 | `assets/css/site.css` | Tek CSS dosyası (design system tokenları + bileşenler) |
 | `assets/js/rezervasyon.js` | Rezervasyon formu (canlı backend'e gönderir) |
-| `assets/js/kvkk.js` | KVKK bandı ve Aydınlatma / Açık Rıza penceresi |
-| `index.html`, `menu.html`, … | **Üretilen** çıktı — elle düzenleme, `src/`'yi düzenleyip build al |
+| `assets/js/kvkk.js` | Aydınlatma / Açık Rıza penceresi (yalnızca rezervasyon sayfasında) |
+| `index.html`, `menu.html`, …, `_layouts/` | **Üretilen** çıktı — elle düzenleme, `src/`'yi düzenleyip build al |
 | `yorum.html`, `worker/` | QR yorum sayfası ve sayaç Worker'ı (build'den bağımsız) |
 
 ## Düzenleme
 
 ```sh
-node src/build.mjs        # src/ -> kök dizindeki .html dosyaları + sitemap.xml
+node src/build.mjs        # src/ -> kök dizindeki .html dosyaları, _layouts/default.html + sitemap.xml
 node tools/serve.mjs      # http://localhost:8080 (GitHub Pages gibi /menu -> menu.html)
 ```
 

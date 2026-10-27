@@ -1,3 +1,9 @@
+---
+layout: default
+title: "Açık Rıza Beyanı — Alp Karadeniz Pidecisi"
+description: "Alp Karadeniz Pidecisi kampanya ve duyurularının SMS / e-posta ile iletilmesi için açık rıza beyanı."
+---
+
 # Alp Karadeniz Pidecisi Açık Rıza Beyanı
 
 > ⚠️ Bu bir başlangıç taslağıdır. Yayınlamadan önce bir KVKK danışmanına/avukata kontrol ettirin.

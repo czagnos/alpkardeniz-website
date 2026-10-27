@@ -10,7 +10,7 @@
     <h2>Veri Sorumlusu</h2>
     <ul>
       <li><strong>Ticari unvan:</strong> Yedi Bölge İletişim Sistemleri İnşaat İthalat İhracat Sanayi Ticaret Ltd. Şti.</li>
-      <li><strong>Adres:</strong> Cevizlik Mah. Hüsreviye Sok. No:34/A Bakırköy / İstanbul</li>
+      <li><strong>Adres:</strong> Cevizlik, Hüsreviye Sk. No: 34, 34142 Bakırköy/İstanbul</li>
       <li><strong>E-posta:</strong> <a href="mailto:info@alpkaradeniz.com">info@alpkaradeniz.com</a></li>
       <li><strong>Telefon:</strong> +90 212 572 76 46</li>
     </ul>

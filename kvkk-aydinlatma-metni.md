@@ -11,7 +11,7 @@ description: "Alp Karadeniz Pidecisi'nin 6698 sayılı KVKK kapsamında kişisel
 ## Veri Sorumlusu
 
 - **Ticari unvan:** Yedi Bölge İletişim Sistemleri İnşaat İthalat İhracat Sanayi Ticaret Ltd. Şti.
-- **Adres:** Cevizlik Mah. Hüsreviye Sok. No:34/A Bakırköy / İstanbul
+- **Adres:** Cevizlik, Hüsreviye Sk. No: 34, 34142 Bakırköy/İstanbul
 - **E-posta:** info@alpkaradeniz.com
 - **Telefon:** +90 212 572 76 46
 

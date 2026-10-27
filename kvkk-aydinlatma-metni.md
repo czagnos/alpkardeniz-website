@@ -6,8 +6,6 @@ description: "Alp Karadeniz Pidecisi'nin 6698 sayılı KVKK kapsamında kişisel
 
 # Alp Karadeniz Pidecisi Kişisel Verilerin Korunması ve İşlenmesi Aydınlatma Metni
 
-> ⚠️ Bu bir başlangıç taslağıdır. Yayınlamadan önce mutlaka bir KVKK danışmanına/avukata kontrol ettirin.
-
 ## Veri Sorumlusu
 
 - **Ticari unvan:** Yedi Bölge İletişim Sistemleri İnşaat İthalat İhracat Sanayi Ticaret Ltd. Şti.

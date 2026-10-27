@@ -44,7 +44,6 @@
     <p>Kişisel verileriniz, ilgili mevzuatta öngörülen süreler ve işleme amacının gerektirdiği süre boyunca saklanır; sürenin sonunda silinir, yok edilir veya anonim hâle getirilir.</p>
     <h2>Haklarınız (KVKK m.11)</h2>
     <p>Kişisel verilerinize ilişkin olarak işlenip işlenmediğini öğrenme, bilgi talep etme, düzeltilmesini veya silinmesini isteme, işlemeye itiraz etme, aktarıldığı üçüncü kişileri öğrenme ve KVKK m.11&rsquo;de sayılan diğer haklarınızı <a href="mailto:info@alpkaradeniz.com">info@alpkaradeniz.com</a> adresi üzerinden kullanabilirsiniz.</p>
-    <p class="akp-fineprint">Bu metin bir başlangıç taslağıdır; nihai hâli için bir KVKK danışmanına/avukata danışmanız önerilir.</p>
   `;
 
   var RIZA = `
@@ -58,7 +57,6 @@
       <li>Rıza vermeseniz de rezervasyon talebinizi gönderebilirsiniz.</li>
       <li>Verdiğiniz rızayı istediğiniz zaman geri çekebilirsiniz.</li>
     </ul>
-    <p class="akp-fineprint">Bu metin bir başlangıç taslağıdır; nihai hâli için bir KVKK danışmanına/avukata danışmanız önerilir.</p>
   `;
 
   function el(tag, cls, html){ var e=document.createElement(tag); if(cls)e.className=cls; if(html!=null)e.innerHTML=html; return e; }

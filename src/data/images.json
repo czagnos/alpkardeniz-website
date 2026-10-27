@@ -1,0 +1,166 @@
+{
+  "salon": {
+    "width": 1500,
+    "height": 1001,
+    "widths": [
+      480,
+      720,
+      960,
+      1500
+    ]
+  },
+  "usta-hamur": {
+    "width": 1001,
+    "height": 1251,
+    "widths": [
+      480,
+      720,
+      960
+    ]
+  },
+  "tereyagi-firca": {
+    "width": 1000,
+    "height": 1333,
+    "widths": [
+      480,
+      720,
+      960
+    ]
+  },
+  "pide-tepsiler": {
+    "width": 1001,
+    "height": 1251,
+    "widths": [
+      480,
+      720,
+      960
+    ]
+  },
+  "firin-sutlac": {
+    "width": 1000,
+    "height": 1000,
+    "widths": [
+      480,
+      720,
+      960
+    ]
+  },
+  "yumurtali-kavurmali-yakin": {
+    "width": 1000,
+    "height": 1333,
+    "widths": [
+      480,
+      720,
+      960
+    ]
+  },
+  "kavurmali-pide-tabak": {
+    "width": 1000,
+    "height": 1333,
+    "widths": [
+      480,
+      720,
+      960
+    ]
+  },
+  "kapali-pide-sepet": {
+    "width": 1000,
+    "height": 625,
+    "widths": [
+      480,
+      720,
+      960
+    ]
+  },
+  "firindan-cikaris": {
+    "width": 1001,
+    "height": 1335,
+    "widths": [
+      480,
+      720,
+      960
+    ]
+  },
+  "sucuklu-kasarli": {
+    "width": 1001,
+    "height": 1001,
+    "widths": [
+      480,
+      720,
+      960
+    ]
+  },
+  "kavurmali-acik-tepsi": {
+    "width": 1000,
+    "height": 1500,
+    "widths": [
+      480,
+      720,
+      960
+    ]
+  },
+  "kapali-pide-tugla": {
+    "width": 1000,
+    "height": 1333,
+    "widths": [
+      480,
+      720,
+      960
+    ]
+  },
+  "mantarli-kasarli": {
+    "width": 1000,
+    "height": 1333,
+    "widths": [
+      480,
+      720,
+      960
+    ]
+  },
+  "dilimli-pideler": {
+    "width": 1000,
+    "height": 1250,
+    "widths": [
+      480,
+      720,
+      960
+    ]
+  },
+  "kavurmali-yumurtali-tabak": {
+    "width": 1000,
+    "height": 1333,
+    "widths": [
+      480,
+      720,
+      960
+    ]
+  },
+  "kemerli-nisler": {
+    "width": 1500,
+    "height": 1000,
+    "widths": [
+      480,
+      720,
+      960,
+      1500
+    ]
+  },
+  "usta-firin": {
+    "width": 1000,
+    "height": 1500,
+    "widths": [
+      480,
+      720,
+      960
+    ]
+  },
+  "pide-sofrasi": {
+    "width": 1000,
+    "height": 750,
+    "widths": [
+      480,
+      720,
+      960
+    ]
+  }
+}

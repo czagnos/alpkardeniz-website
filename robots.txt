@@ -1,0 +1,23 @@
+# alpkaradeniz.com — tüm tarayıcılara açık.
+# /yorum bilinçli olarak engellenmiyor: sayfada noindex var, Google'ın bu etiketi görebilmesi gerekiyor.
+
+User-agent: *
+Allow: /
+
+# Yapay zekâ arama ve asistan tarayıcıları (açıkça izinli)
+User-agent: GPTBot
+Allow: /
+
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+Sitemap: https://alpkaradeniz.com/sitemap.xml

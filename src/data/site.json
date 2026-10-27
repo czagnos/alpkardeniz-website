@@ -1,0 +1,32 @@
+{
+  "name": "Alp Karadeniz Pidecisi",
+  "url": "https://alpkaradeniz.com",
+  "telephone": "+90 212 572 76 46",
+  "telephoneHref": "tel:+902125727646",
+  "telephoneLocal": "(212) 572-7646",
+  "email": "info@alpkaradeniz.com",
+  "address": {
+    "streetAddress": "Cevizlik, Hüsreviye Sk. No: 34",
+    "addressLocality": "Bakırköy",
+    "addressRegion": "İstanbul",
+    "postalCode": "34142",
+    "addressCountry": "TR"
+  },
+  "addressDisplay": "Cevizlik, Hüsreviye Sk. No: 34, 34142 Bakırköy/İstanbul",
+  "geo": {
+    "latitude": 40.980491795696366,
+    "longitude": 28.874836517985756
+  },
+  "mapsUrl": "https://maps.app.goo.gl/pJgyAfVphbogkUYo7",
+  "googlePlaceId": "ChIJ29LnMaS8yhQRA-uoAEW4944",
+  "instagram": "https://www.instagram.com/alpkaradenizpidecisi/",
+  "hoursDisplay": "Her gün · 11:00 – 22:00",
+  "opens": "11:00",
+  "closes": "22:00",
+  "foundingDate": "1970",
+  "servesCuisine": [
+    "Karadeniz mutfağı",
+    "Pide"
+  ],
+  "turnstileSiteKey": "0x4AAAAAADqTXiFLT_IYzDpI"
+}

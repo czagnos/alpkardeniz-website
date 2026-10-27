@@ -1,0 +1,10 @@
+# GitHub Pages (Jekyll) ayarları.
+# Site düz HTML; Jekyll yalnızca kvkk-*.md sayfalarını HTML'e çevirmek için çalışıyor.
+# Aşağıdakiler sitede yayınlanmaz.
+exclude:
+  - worker/
+  - docs/
+  - .idea/
+  - src/
+  - tools/
+  - README.md

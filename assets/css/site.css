@@ -472,7 +472,7 @@ img { max-width: 100%; }
 .menu-item__name { font-family: var(--font-body, Inter, sans-serif); font-size: 1rem; font-weight: 500; color: #1C1C1A; }
 .menu-item__dots { flex: 1; border-bottom: 1px dotted color-mix(in srgb, #1C1C1A 28%, transparent); transform: translateY(-4px); }
 .menu-item__price { font-family: var(--font-display, 'Playfair Display', serif); font-weight: 600; font-size: 1.1875rem; color: #3A3934; }
-.menu-item--desc { flex-wrap: wrap; row-gap: 0; }
+.menu-item--desc { flex-wrap: wrap; align-content: flex-start; row-gap: 0; }
 .menu-item__desc { flex-basis: 100%; margin: 4px 0 0; font-family: var(--font-body, Inter, sans-serif); font-size: 0.875rem; line-height: 1.5; color: #5C5A52; }
 .menu-section__note { margin: 28px 0 0; font-family: var(--font-body, Inter, sans-serif); font-size: 0.9375rem; font-style: italic; color: #5C5A52; }
 

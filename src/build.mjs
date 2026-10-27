@@ -8,7 +8,7 @@
 //   {{> header }}                   src/partials/header.html
 //   {{@ menu }}, {{@ jsonld }}, {{@ preload }}, {{@ asset /yol }}   üretilen bloklar
 //   <img data-img="ad" sizes="…">   src/data/images.json'dan srcset/width/height eklenir;
-//                                   data-eager yoksa loading="lazy" olur
+//                                   data-eager yoksa loading="lazy" olur (<source data-img> da desteklenir)
 //   <!--@head-->…<!--@endhead-->    <head> sonuna eklenir; <!--@body-->…<!--@endbody--> </body> öncesine
 import { readFileSync, writeFileSync, readdirSync, existsSync } from 'node:fs';
 import { createHash } from 'node:crypto';
@@ -23,6 +23,9 @@ const site = readJson('data/site.json');
 const menu = readJson('data/menu.json');
 const images = readJson('data/images.json');
 
+// Yol tarifi (Google Maps URLs): place_id öncelikli, koordinat yedek
+site.directionsUrl = `https://www.google.com/maps/dir/?api=1&destination=${site.geo.latitude},${site.geo.longitude}&destination_place_id=${site.googlePlaceId}`;
+
 const esc = (s) => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
 const get = (ctx, path) => path.split('.').reduce((o, k) => (o == null ? undefined : o[k]), ctx);
 const imgPath = (name, w) => `/assets/img/${name}-${w}.webp`;
@@ -36,6 +39,14 @@ function srcset(name) {
   const meta = images[name];
   if (!meta) throw new Error(`images.json'da yok: ${name}`);
   return meta.widths.map((w) => `${imgPath(name, w)} ${w}w`).join(', ');
+}
+
+// <picture> içindeki <source data-img="ad" media="…" sizes="…">: yalnızca srcset ve boyut eklenir
+function expandSource(tag) {
+  const name = tag.match(/data-img="([^"]+)"/)[1];
+  const meta = images[name];
+  if (!meta) throw new Error(`images.json'da yok: ${name}`);
+  return tag.replace(/\sdata-img="[^"]+"/, '').replace(/^<source/, `<source srcset="${srcset(name)}" width="${meta.width}" height="${meta.height}"`);
 }
 
 function expandImg(tag) {
@@ -131,17 +142,29 @@ function menuLd() {
   };
 }
 
+function contactLd(page) {
+  return {
+    '@type': 'ContactPage',
+    '@id': `${site.url}${page.path}#webpage`,
+    url: site.url + page.path,
+    name: page.title,
+    inLanguage: 'tr',
+    mainEntity: { '@id': `${site.url}/#restaurant` },
+  };
+}
+
 function jsonLd(page) {
   const graph = [restaurantLd()];
   if (page.menuJsonLd) graph.push(menuLd());
+  if (page.contactJsonLd) graph.push(contactLd(page));
   const json = JSON.stringify({ '@context': 'https://schema.org', '@graph': graph }, null, 2).replace(/</g, '\\u003c');
   return `<script type="application/ld+json">\n${json}\n</script>`;
 }
 
 function preload(page) {
   if (!page.preload) return '';
-  const { img, sizes } = page.preload;
-  return `<link rel="preload" as="image" type="image/webp" imagesrcset="${srcset(img)}" imagesizes="${sizes}" fetchpriority="high">\n`;
+  return [].concat(page.preload).map(({ img, sizes, media }) =>
+    `<link rel="preload" as="image" type="image/webp" imagesrcset="${srcset(img)}" imagesizes="${sizes}"${media ? ` media="${media}"` : ''} fetchpriority="high">\n`).join('');
 }
 
 function render(tpl, ctx) {
@@ -166,7 +189,9 @@ function render(tpl, ctx) {
     if (v === undefined) throw new Error(`tanımsız değer: ${p}`);
     return esc(v);
   });
-  return out.replace(/<img\b[^>]*\bdata-img="[^"]+"[^>]*>/g, expandImg);
+  return out
+    .replace(/<source\b[^>]*\bdata-img="[^"]+"[^>]*>/g, expandSource)
+    .replace(/<img\b[^>]*\bdata-img="[^"]+"[^>]*>/g, expandImg);
 }
 
 const GALLERY_SIZES = '(min-width: 1240px) 379px, (min-width: 884px) calc((100vw - 104px) / 3), (min-width: 600px) calc((100vw - 80px) / 2), calc(100vw - 56px)';
@@ -207,7 +232,7 @@ for (const file of readdirSync(join(SRC, 'pages')).filter((f) => f.endsWith('.ht
   console.log(`${file}  ${(Buffer.byteLength(html) / 1024).toFixed(1)} KB`);
 }
 
-const order = ['/', '/menu', '/hikayemiz', '/rezervasyon'].map((p) => site.url + p);
+const order = ['/', '/menu', '/hikayemiz', '/rezervasyon', '/iletisim'].map((p) => site.url + p);
 sitemapEntries.sort((a, b) => order.indexOf(a.loc) - order.indexOf(b.loc));
 writeFileSync(sitemapPath, `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">

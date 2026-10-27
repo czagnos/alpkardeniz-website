@@ -4,7 +4,10 @@
   "nav": "home",
   "title": "Alp Karadeniz Pidecisi — Bakırköy · Est. 1970",
   "description": "1970'ten beri Bakırköy'de Karadeniz pidesi. İnce hamur, saf içerik ve yarım asırlık zanaat: Alp Karadeniz Pidecisi her gün 11:00–22:00 arası açık.",
-  "preload": { "img": "salon", "sizes": "100vw" }
+  "preload": [
+    { "img": "salon-dikey", "sizes": "57vh", "media": "(max-aspect-ratio: 3/5)" },
+    { "img": "salon", "sizes": "100vw", "media": "not all and (max-aspect-ratio: 3/5)" }
+  ]
 }
 -->
 <!--@head-->
@@ -17,7 +20,10 @@
 <main id="icerik">
 
   <section class="hero">
-    <img data-img="salon" data-eager class="hero__img" sizes="100vw" alt="Alp Karadeniz Pidecisi salonu — ceviz masalar, yeşil sandalyeler, ağaca bakan pencere">
+    <picture>
+      <source media="(max-aspect-ratio: 3/5)" data-img="salon-dikey" sizes="57vh">
+      <img data-img="salon" data-eager class="hero__img" sizes="100vw" alt="Alp Karadeniz Pidecisi salonu — ceviz masalar, yeşil sandalyeler, ağaca bakan pencere">
+    </picture>
     <div class="hero__shade"></div>
     <div class="hero__inner">
       <div class="hero__content">

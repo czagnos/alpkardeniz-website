@@ -14,7 +14,10 @@ from PIL import Image
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 OUT = os.path.join(ROOT, 'assets', 'img')
 WIDTHS = [480, 720, 960, 1600]  # kaynak daha darsa en büyük varyant kaynak genişliğinde kalır
-QUALITY = 66
+QUALITY = 82  # 66'da pide kabuğu gibi ince dokular belirgin şekilde bulanıklaşıyordu
+# Sayfanın LCP görseli olanlar: Lighthouse mobil (yavaş 4G) LCP < 2,5 sn kalsın diye daha düşük kalite.
+# salon-dikey ~57 KB'ın altında kalmalı; üstünde LCP 2,3 sn'den 2,6 sn'ye sıçrıyor.
+QUALITY_BY_NAME = {'salon-dikey': 60, 'pide-sofrasi': 70}
 
 # eski bundle'daki dosya kimliği -> anlamlı ad, ya da (ad, (en, boy)).
 # Oran verilirse görsel sayfadaki aspect-ratio kutusuna ortadan kırpılır; object-fit: cover
@@ -39,6 +42,13 @@ NAMES = {
     'a2693dc0-3325-4fd6-9b21-3bb4b3931a20': 'usta-firin',
     'd01390f0-21a7-4f99-b887-eef9b06edf77': ('pide-sofrasi', (4, 3)),
 }
+# Aynı kaynaktan ek kırpımlar: ad -> (dosya kimliği, oran).
+# salon-dikey: telefonda hero (92vh, object-fit: cover) yatay fotoğrafın yalnızca orta şeridini
+# gösteriyor. 960'lık yatay varyant orada 2-3 kat büyütülüp bulanıklaşıyordu; bu şerit kaynağın tam
+# çözünürlüğünde ayrı dosya olarak verilir (index.html'de <picture>, max-aspect-ratio: 3/5).
+CROPS = {
+    'salon-dikey': ('bb33cd1d-c388-4d3d-8b81-7339341e5a10', (31, 50)),
+}
 OG_SOURCE = 'salon'
 
 
@@ -56,19 +66,21 @@ def center_crop(im, ratio):
 def main(src_dir):
     os.makedirs(OUT, exist_ok=True)
     meta = {}
-    for uid, entry in NAMES.items():
-        name, ratio = entry if isinstance(entry, tuple) else (entry, None)
+    jobs = [(uid, *(e if isinstance(e, tuple) else (e, None))) for uid, e in NAMES.items()]
+    jobs += [(uid, name, ratio) for name, (uid, ratio) in CROPS.items()]
+    for uid, name, ratio in jobs:
         im = Image.open(os.path.join(src_dir, uid + '.jpg')).convert('RGB')
         if ratio:
             im = center_crop(im, ratio[0] / ratio[1])
         w, h = im.size
         widths = [x for x in WIDTHS if x < w]
-        if not widths or w - widths[-1] > 200:  # 960 ile 1000 gibi neredeyse aynı varyantları atla
-            widths.append(w)
+        if widths and w - widths[-1] <= 200:  # 960 ile 1000 gibi neredeyse aynı varyantlarda kaynağı tut
+            widths.pop()
+        widths.append(w)
         for tw in widths:
             th = round(h * tw / w)
             im.resize((tw, th), Image.LANCZOS).save(
-                os.path.join(OUT, f'{name}-{tw}.webp'), 'WEBP', quality=QUALITY, method=6)
+                os.path.join(OUT, f'{name}-{tw}.webp'), 'WEBP', quality=QUALITY_BY_NAME.get(name, QUALITY), method=6)
         meta[name] = {'width': w, 'height': h, 'widths': widths}
         if name == OG_SOURCE:
             # 1200x630 ortadan kırpma

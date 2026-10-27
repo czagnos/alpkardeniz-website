@@ -1,0 +1,62 @@
+<!--
+{
+  "path": "/iletisim",
+  "nav": "contact",
+  "title": "İletişim — Alp Karadeniz Pidecisi, Bakırköy",
+  "description": "Alp Karadeniz Pidecisi adres, telefon ve çalışma saatleri: Cevizlik, Hüsreviye Sk. No: 34, Bakırköy/İstanbul · (212) 572-7646 · Her gün 11:00–22:00.",
+  "contactJsonLd": true
+}
+-->
+{{> header }}
+<main id="icerik">
+
+  <div class="reserve__head page-head">
+    <div class="kicker">
+      <span class="kicker__rule"></span>
+      <span class="kicker__text">Est. 1970 · Bakırköy</span>
+      <span class="kicker__rule"></span>
+    </div>
+    <h1 class="page-title">İletişim</h1>
+  </div>
+
+  <section class="reserve">
+    <div class="reserve__grid">
+
+      <div class="contact">
+        <div class="contact__item">
+          <span class="contact__label">Telefon</span>
+          <a class="contact__phone" href="{{ site.telephoneHref }}">{{ site.telephoneLocal }}</a>
+        </div>
+        <span class="contact__rule"></span>
+        <div class="contact__item">
+          <span class="contact__label">Adres</span>
+          <p class="contact__value"><a href="{{ site.mapsUrl }}" target="_blank" rel="noopener">{{ site.addressDisplay }}</a></p>
+        </div>
+        <span class="contact__rule"></span>
+        <div class="contact__item">
+          <span class="contact__label">Çalışma Saatleri</span>
+          <p class="contact__value">{{ site.hoursDisplay }}</p>
+        </div>
+        <span class="contact__rule"></span>
+        <div class="contact__item">
+          <span class="contact__label">E-posta</span>
+          <p class="contact__value"><a href="mailto:{{ site.email }}">{{ site.email }}</a></p>
+        </div>
+        <span class="contact__rule"></span>
+        <div class="contact__item">
+          <span class="contact__label">Instagram</span>
+          <p class="contact__value"><a href="{{ site.instagram }}" target="_blank" rel="noopener">@alpkaradenizpidecisi</a></p>
+        </div>
+        <div class="contact__actions">
+          <a class="btn btn--primary btn--lg" href="{{ site.directionsUrl }}" target="_blank" rel="noopener">Yol Tarifi Al</a>
+          <a class="btn btn--amber btn--lg" href="/rezervasyon">Rezervasyon Yap</a>
+        </div>
+      </div>
+
+      <img data-img="salon" data-eager class="reserve__img" sizes="(min-width: 1100px) 494px, (min-width: 712px) calc((100vw - 112px) / 2), calc(100vw - 56px)" alt="Alp Karadeniz Pidecisi salonu — ceviz masalar, yeşil sandalyeler, ağaca bakan pencere">
+
+    </div>
+  </section>
+
+</main>
+{{> footer }}

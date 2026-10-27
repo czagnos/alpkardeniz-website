@@ -12,6 +12,4 @@ Alp Karadeniz Pidecisi tarafından; kampanya, promosyon, indirim ve duyuruların
 
 ☐ **Onaylıyorum**
 
-*(Bu kutu önceden işaretli GELMEMELİDİR; kullanıcı kendisi işaretlemelidir.)*
-
 Bu rızam, hizmetten yararlanmamın ön koşulu değildir ve dilediğim zaman info@alpkaradeniz.com üzerinden geri çekebilirim.

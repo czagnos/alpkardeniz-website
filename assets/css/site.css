@@ -344,7 +344,7 @@ img { max-width: 100%; }
 /* ---- Logo (design system: Logo, size sm) ---- */
 .logo { display: inline-flex; flex-direction: column; align-items: center; gap: 0.4rem; line-height: 1; }
 .logo__name { font-family: var(--font-display); font-weight: var(--fw-bold); font-size: 1.25rem; letter-spacing: 0.01em; color: var(--ink-900); white-space: nowrap; }
-.logo__yolk { color: var(--amber-600); }
+.logo__yolk { color: var(--amber-700); } /* açık zeminde amber-600 kontrastı 2,1:1 kalıyordu */
 .logo__sub { display: inline-flex; align-items: center; gap: 0.6rem; font-family: var(--font-body); font-weight: var(--fw-semibold); font-size: 0.5rem; letter-spacing: 0.32em; text-transform: uppercase; color: var(--walnut-600); white-space: nowrap; }
 .logo__rule { width: 14px; height: 1px; background: var(--amber-600); }
 .logo--dark .logo__name { color: var(--cream-100); }
@@ -465,13 +465,15 @@ img { max-width: 100%; }
 .menu { max-width: 860px; margin: 0 auto; padding: 96px 28px 140px; }
 .menu-section { margin-top: 88px; }
 .menu-section__head { display: flex; align-items: center; gap: 20px; }
-.menu-section__title { margin: 0; font-family: var(--font-body, Inter, sans-serif); font-size: 0.8125rem; font-weight: 600; letter-spacing: 0.18em; color: #8B5E3C; white-space: nowrap; }
+.menu-section__title { margin: 0; font-family: var(--font-body, Inter, sans-serif); font-size: 0.8125rem; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: #8B5E3C; white-space: nowrap; }
 .menu-section__line { flex: 1; height: 1px; background: color-mix(in srgb, #1C1C1A 14%, transparent); display: block; }
 .menu-list { margin: 36px 0 0; padding: 0; list-style: none; display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); column-gap: 72px; row-gap: 0; }
 .menu-item { display: flex; align-items: baseline; gap: 14px; padding: 14px 0; }
 .menu-item__name { font-family: var(--font-body, Inter, sans-serif); font-size: 1rem; font-weight: 500; color: #1C1C1A; }
 .menu-item__dots { flex: 1; border-bottom: 1px dotted color-mix(in srgb, #1C1C1A 28%, transparent); transform: translateY(-4px); }
 .menu-item__price { font-family: var(--font-display, 'Playfair Display', serif); font-weight: 600; font-size: 1.1875rem; color: #3A3934; }
+.menu-item--desc { flex-wrap: wrap; align-content: flex-start; row-gap: 0; }
+.menu-item__desc { flex-basis: 100%; margin: 4px 0 0; font-family: var(--font-body, Inter, sans-serif); font-size: 0.875rem; line-height: 1.5; color: #5C5A52; }
 .menu-section__note { margin: 28px 0 0; font-family: var(--font-body, Inter, sans-serif); font-size: 0.9375rem; font-style: italic; color: #5C5A52; }
 
 /* ---- Story ---- */
@@ -507,7 +509,7 @@ img { max-width: 100%; }
 .field { display: flex; flex-direction: column; gap: 0.4rem; }
 .field__label { font-family: var(--font-body, Inter, sans-serif); font-size: var(--fs-caption, 0.8125rem); font-weight: 600; letter-spacing: 0.04em; text-transform: uppercase; color: #5C5A52; }
 .field__req { color: #B5462E; }
-.field__opt { text-transform: none; font-weight: 400; letter-spacing: 0; color: #8B8579; }
+.field__opt { text-transform: none; font-weight: 400; letter-spacing: 0; color: #6E6A60; }
 .field__input {
   width: 100%; box-sizing: border-box; font-family: var(--font-body); font-size: var(--fs-body); color: var(--text-strong);
   background: var(--surface-raised); border: 1px solid var(--border-default); border-radius: var(--radius-md);
@@ -527,13 +529,13 @@ img { max-width: 100%; }
 .rform__consent { grid-column: 1 / -1; display: flex; flex-direction: column; gap: 10px; margin-top: 2px; }
 .rform__check { display: flex; gap: 10px; align-items: flex-start; cursor: pointer; font-family: Inter, sans-serif; font-size: 0.875rem; line-height: 1.5; color: #5C5A52; }
 .rform__check input { margin-top: 3px; width: 18px; height: 18px; accent-color: #15241A; flex: 0 0 auto; }
-.rform__legal { margin: 0; font-family: Inter, sans-serif; font-size: 0.8125rem; line-height: 1.6; color: #8B8579; }
+.rform__legal { margin: 0; font-family: Inter, sans-serif; font-size: 0.8125rem; line-height: 1.6; color: #6E6A60; }
 .rform__legal a { color: #15241A; font-weight: 600; cursor: pointer; }
 .rform__turnstile { grid-column: 1 / -1; min-height: 65px; display: flex; justify-content: center; }
 .rform__submit { grid-column: 1 / -1; margin-top: 4px; }
-.rform__fine { grid-column: 1 / -1; margin: 2px 0 0; text-align: center; font-family: var(--font-body, Inter, sans-serif); font-size: 0.8125rem; line-height: 1.6; color: #8B8579; }
+.rform__fine { grid-column: 1 / -1; margin: 2px 0 0; text-align: center; font-family: var(--font-body, Inter, sans-serif); font-size: 0.8125rem; line-height: 1.6; color: #6E6A60; }
 
-/* ---- KVKK bandı ve penceresi (assets/js/kvkk.js) ---- */
+/* ---- KVKK penceresi (assets/js/kvkk.js, rezervasyon sayfası) ---- */
 .akp-kvkk-overlay{position:fixed;inset:0;background:rgba(21,36,26,0.55);display:none;align-items:center;justify-content:center;z-index:100000;padding:20px}
 .akp-kvkk-overlay.akp-open{display:flex}
 .akp-kvkk-modal{background:#FAF7F2;color:#1C1C1A;max-width:680px;width:100%;max-height:86vh;border-radius:16px;box-shadow:0 30px 80px -20px rgba(0,0,0,0.55);display:flex;flex-direction:column;overflow:hidden;font-family:Inter,system-ui,-apple-system,Segoe UI,Helvetica,Arial,sans-serif}
@@ -548,17 +550,15 @@ img { max-width: 100%; }
 .akp-kvkk-body ul{margin:6px 0 10px 18px;padding:0}
 .akp-kvkk-body a{color:#15241A;font-weight:600}
 .akp-kvkk-body .akp-note{font-size:0.82rem;color:#5C5A52;background:#fff;border:1px solid rgba(28,28,26,0.1);border-radius:8px;padding:10px 12px;margin:0 0 14px}
-.akp-kvkk-body .akp-fineprint{font-size:0.78rem;color:#8B8579;margin-top:18px;border-top:1px solid rgba(28,28,26,0.1);padding-top:12px}
-#akp-kvkk-banner{position:fixed;left:0;right:0;bottom:0;z-index:99990;background:#15241A;color:#FAF7F2;box-shadow:0 -10px 40px -12px rgba(0,0,0,0.55)}
-.akp-kvkk-binner{max-width:1100px;margin:0 auto;padding:16px 22px;display:flex;flex-wrap:wrap;gap:14px;align-items:center;justify-content:space-between}
-.akp-kvkk-binner p{margin:0;font-family:Inter,system-ui,sans-serif;font-size:0.875rem;line-height:1.55;color:rgba(250,247,242,0.85);flex:1 1 320px}
-.akp-kvkk-binner a{color:#E8A020;text-decoration:underline;cursor:pointer}
-.akp-kvkk-bactions{display:flex;gap:10px;align-items:center;flex:0 0 auto}
-.akp-primary{background:#E8A020;color:#15241A;border:0;border-radius:10px;padding:10px 18px;font:inherit;font-weight:700;font-size:0.875rem;cursor:pointer}
-.akp-ghost{background:transparent;color:#FAF7F2;border:1px solid rgba(250,247,242,0.4);border-radius:10px;padding:10px 16px;font:inherit;font-weight:600;font-size:0.875rem;cursor:pointer}
-.akp-foot-link{color:rgba(250,247,242,0.78);text-decoration:none;cursor:pointer}
-.akp-foot-link:hover{color:#FAF7F2}
-@media(max-width:560px){.akp-kvkk-bactions{flex:1 1 100%;justify-content:flex-end}}
+
+/* ---- KVKK metinleri (kvkk-*.md, _layouts/default.html) ---- */
+.legal { max-width: 760px; margin: 0 auto; padding: 96px 28px 120px; }
+.legal h1 { font-size: clamp(1.75rem, 1.4rem + 1.4vw, 2.4rem); margin: 0 0 32px; }
+.legal h2 { font-size: 1.25rem; margin: 40px 0 12px; }
+.legal p, .legal li { font-family: var(--font-body, Inter, sans-serif); font-size: 1.0625rem; line-height: 1.75; color: #3A3934; }
+.legal ul { margin: 0 0 16px; padding-left: 1.25rem; }
+.legal li { margin: 4px 0; }
+.legal hr { border: 0; border-top: 1px solid rgba(28,28,26,0.12); margin: 48px 0; }
 
 .visually-hidden { position: absolute !important; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0; }
 

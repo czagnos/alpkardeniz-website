@@ -1,11 +1,15 @@
-# Alp Karadeniz Pidecisi Kişisel Verilerin Korunması ve İşlenmesi Aydınlatma Metni
+---
+layout: default
+title: "KVKK Aydınlatma Metni — Alp Karadeniz Pidecisi"
+description: "Alp Karadeniz Pidecisi'nin 6698 sayılı KVKK kapsamında kişisel verilerin işlenmesine ilişkin aydınlatma metni."
+---
 
-> ⚠️ Bu bir başlangıç taslağıdır. Yayınlamadan önce mutlaka bir KVKK danışmanına/avukata kontrol ettirin.
+# Alp Karadeniz Pidecisi Kişisel Verilerin Korunması ve İşlenmesi Aydınlatma Metni
 
 ## Veri Sorumlusu
 
 - **Ticari unvan:** Yedi Bölge İletişim Sistemleri İnşaat İthalat İhracat Sanayi Ticaret Ltd. Şti.
-- **Adres:** Cevizlik Mah. Hüsreviye Sok. No:34/A Bakırköy / İstanbul
+- **Adres:** Cevizlik, Hüsreviye Sk. No: 34, 34142 Bakırköy/İstanbul
 - **E-posta:** info@alpkaradeniz.com
 - **Telefon:** +90 212 572 76 46
 

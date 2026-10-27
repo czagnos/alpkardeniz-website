@@ -1,9 +1,8 @@
-/* KVKK bilgilendirme bandı ve Aydınlatma / Açık Rıza penceresi.
-   Metinler kök dizindeki kvkk-*.md dosyalarıyla aynı içeriktedir. JS yoksa
-   [data-kvkk-open] linkleri doğrudan bu .md sayfalarına gider. */
+/* KVKK Aydınlatma / Açık Rıza penceresi (yalnızca rezervasyon sayfasında yüklenir).
+   Metinler kök dizindeki kvkk-*.md sayfalarıyla aynı içeriktedir. JS yoksa
+   [data-kvkk-open] linkleri doğrudan bu sayfalara gider. */
 (function(){
   "use strict";
-  var LS_KEY = "akp-kvkk-ack-v1";
 
   var AYDINLATMA = `
     <h1>Kişisel Verilerin Korunması ve İşlenmesi Aydınlatma Metni</h1>
@@ -11,7 +10,7 @@
     <h2>Veri Sorumlusu</h2>
     <ul>
       <li><strong>Ticari unvan:</strong> Yedi Bölge İletişim Sistemleri İnşaat İthalat İhracat Sanayi Ticaret Ltd. Şti.</li>
-      <li><strong>Adres:</strong> Cevizlik Mah. Hüsreviye Sok. No:34/A Bakırköy / İstanbul</li>
+      <li><strong>Adres:</strong> Cevizlik, Hüsreviye Sk. No: 34, 34142 Bakırköy/İstanbul</li>
       <li><strong>E-posta:</strong> <a href="mailto:info@alpkaradeniz.com">info@alpkaradeniz.com</a></li>
       <li><strong>Telefon:</strong> +90 212 572 76 46</li>
     </ul>
@@ -45,7 +44,6 @@
     <p>Kişisel verileriniz, ilgili mevzuatta öngörülen süreler ve işleme amacının gerektirdiği süre boyunca saklanır; sürenin sonunda silinir, yok edilir veya anonim hâle getirilir.</p>
     <h2>Haklarınız (KVKK m.11)</h2>
     <p>Kişisel verilerinize ilişkin olarak işlenip işlenmediğini öğrenme, bilgi talep etme, düzeltilmesini veya silinmesini isteme, işlemeye itiraz etme, aktarıldığı üçüncü kişileri öğrenme ve KVKK m.11&rsquo;de sayılan diğer haklarınızı <a href="mailto:info@alpkaradeniz.com">info@alpkaradeniz.com</a> adresi üzerinden kullanabilirsiniz.</p>
-    <p class="akp-fineprint">Bu metin bir başlangıç taslağıdır; nihai hâli için bir KVKK danışmanına/avukata danışmanız önerilir.</p>
   `;
 
   var RIZA = `
@@ -59,7 +57,6 @@
       <li>Rıza vermeseniz de rezervasyon talebinizi gönderebilirsiniz.</li>
       <li>Verdiğiniz rızayı istediğiniz zaman geri çekebilirsiniz.</li>
     </ul>
-    <p class="akp-fineprint">Bu metin bir başlangıç taslağıdır; nihai hâli için bir KVKK danışmanına/avukata danışmanız önerilir.</p>
   `;
 
   function el(tag, cls, html){ var e=document.createElement(tag); if(cls)e.className=cls; if(html!=null)e.innerHTML=html; return e; }
@@ -99,15 +96,4 @@
     if(t){ e.preventDefault(); openModal(t.getAttribute("data-kvkk-open")); }
   });
   document.addEventListener("keydown", function(e){ if(e.key==="Escape") closeModal(); });
-
-  function showBanner(){
-    var done=false; try{ done=!!localStorage.getItem(LS_KEY); }catch(e){}
-    if(done || document.getElementById("akp-kvkk-banner")) return;
-    var b=el("div"); b.id="akp-kvkk-banner";
-    b.setAttribute("role","region"); b.setAttribute("aria-label","KVKK bilgilendirmesi");
-    b.innerHTML='<div class="akp-kvkk-binner"><p>Web sitemizde, rezervasyon taleplerinizi karşılamak ve hizmetlerimizi sunmak için kişisel verilerinizi 6698 sayılı KVKK kapsamında işliyoruz. Ayrıntılar için <a href="/kvkk-aydinlatma-metni" data-kvkk-open="aydinlatma">Aydınlatma Metni</a>&rsquo;ni inceleyebilirsiniz.</p><div class="akp-kvkk-bactions"><button type="button" class="akp-ghost" data-kvkk-open="aydinlatma">İncele</button><button type="button" id="akp-kvkk-accept" class="akp-primary">Kabul Ediyorum</button></div></div>';
-    document.body.appendChild(b);
-    document.getElementById("akp-kvkk-accept").addEventListener("click", function(){ try{ localStorage.setItem(LS_KEY, new Date().toISOString()); }catch(e){} b.remove(); });
-  }
-  showBanner();
 })();

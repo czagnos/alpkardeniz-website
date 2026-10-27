@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{{ page.title | escape }}</title>
+<meta name="description" content="{{ page.description | escape }}">
+<link rel="canonical" href="https://alpkaradeniz.com{{ page.url | remove: '.html' }}">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="tr_TR">
+<meta property="og:site_name" content="Alp Karadeniz Pidecisi">
+<meta property="og:title" content="{{ page.title | escape }}">
+<meta property="og:description" content="{{ page.description | escape }}">
+<meta property="og:url" content="https://alpkaradeniz.com{{ page.url | remove: '.html' }}">
+<meta property="og:image" content="https://alpkaradeniz.com/assets/img/og-image.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Alp Karadeniz Pidecisi salonu — ceviz masalar, yeşil sandalyeler">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="{{ page.title | escape }}">
+<meta name="twitter:description" content="{{ page.description | escape }}">
+<meta name="twitter:image" content="https://alpkaradeniz.com/assets/img/og-image.jpg">
+<meta name="theme-color" content="#1B2E20">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="preload" href="/assets/fonts/inter.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/assets/fonts/playfair-display.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/assets/css/site.css?v=a5039069">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Restaurant",
+      "@id": "https://alpkaradeniz.com/#restaurant",
+      "name": "Alp Karadeniz Pidecisi",
+      "url": "https://alpkaradeniz.com/",
+      "logo": "https://alpkaradeniz.com/assets/img/logo.png",
+      "image": "https://alpkaradeniz.com/assets/img/og-image.jpg",
+      "telephone": "+90 212 572 76 46",
+      "email": "info@alpkaradeniz.com",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Cevizlik, Hüsreviye Sk. No: 34",
+        "addressLocality": "Bakırköy",
+        "addressRegion": "İstanbul",
+        "postalCode": "34142",
+        "addressCountry": "TR"
+      },
+      "hasMap": "https://maps.app.goo.gl/pJgyAfVphbogkUYo7",
+      "openingHoursSpecification": [
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": [
+            "Monday",
+            "Tuesday",
+            "Wednesday",
+            "Thursday",
+            "Friday",
+            "Saturday",
+            "Sunday"
+          ],
+          "opens": "09:00",
+          "closes": "21:00"
+        }
+      ],
+      "servesCuisine": [
+        "Karadeniz mutfağı",
+        "Pide"
+      ],
+      "priceRange": "100–560 TRY",
+      "currenciesAccepted": "TRY",
+      "foundingDate": "1970",
+      "hasMenu": "https://alpkaradeniz.com/menu",
+      "acceptsReservations": "https://alpkaradeniz.com/rezervasyon",
+      "sameAs": [
+        "https://www.instagram.com/alpkaradenizpidecisi/",
+        "https://maps.app.goo.gl/pJgyAfVphbogkUYo7"
+      ],
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 40.980491795696366,
+        "longitude": 28.874836517985756
+      }
+    }
+  ]
+}
+</script>
+</head>
+<body>
+<a class="skip-link" href="#icerik">İçeriğe geç</a>
+<header class="site-header">
+  <div class="site-header__inner">
+    <a class="site-header__home" href="/">
+      <span class="logo"><span class="logo__name">Alp <span class="logo__yolk">Karadeniz</span></span><span class="logo__sub"><span class="logo__rule"></span>Pidecisi · Est. 1970<span class="logo__rule"></span></span></span>
+    </a>
+    <nav class="site-nav" aria-label="Ana menü">
+      <a class="site-nav__link" href="/hikayemiz">Hikayemiz</a>
+      <a class="site-nav__link" href="/menu">Menü</a>
+      <a class="site-nav__link" href="/iletisim">İletişim</a>
+      <a class="site-nav__cta" href="/rezervasyon">Rezervasyon</a>
+      <a class="site-nav__ig" href="https://www.instagram.com/alpkaradenizpidecisi/" target="_blank" rel="noopener" aria-label="Instagram">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2.5" y="2.5" width="19" height="19" rx="5.5"></rect><circle cx="12" cy="12" r="4.5"></circle><circle cx="17.6" cy="6.4" r="0.9" fill="currentColor" stroke="none"></circle></svg>
+      </a>
+    </nav>
+  </div>
+</header>
+
+<main id="icerik" class="legal">
+{{ content }}
+</main>
+<footer class="site-footer">
+  <div class="site-footer__inner">
+    <span class="logo logo--dark"><span class="logo__name">Alp <span class="logo__yolk">Karadeniz</span></span><span class="logo__sub"><span class="logo__rule"></span>Pidecisi · Est. 1970<span class="logo__rule"></span></span></span>
+    <address class="site-footer__info">
+      <p class="site-footer__row">
+        <span>Alp Karadeniz Pidecisi</span>
+        <span class="site-footer__sep" aria-hidden="true">·</span>
+        <span>Cevizlik, Hüsreviye Sk. No: 34, 34142 Bakırköy/İstanbul</span>
+        <span class="site-footer__sep" aria-hidden="true">·</span>
+        <span>Her gün 09:00–21:00</span>
+      </p>
+      <p class="site-footer__row">
+        <a href="mailto:info@alpkaradeniz.com">info@alpkaradeniz.com</a>
+        <span class="site-footer__sep" aria-hidden="true">·</span>
+        <a href="tel:+902125727646">+90 212 572 76 46</a>
+        <span class="site-footer__sep" aria-hidden="true">·</span>
+        <a href="https://maps.app.goo.gl/pJgyAfVphbogkUYo7" target="_blank" rel="noopener">Google Maps</a>
+        <span class="site-footer__sep" aria-hidden="true">·</span>
+        <a href="https://www.instagram.com/alpkaradenizpidecisi/" target="_blank" rel="noopener">Instagram</a>
+        <span class="site-footer__sep" aria-hidden="true">·</span>
+        <a href="/kvkk-aydinlatma-metni" data-kvkk-open="aydinlatma">KVKK Aydınlatma Metni</a>
+        <span class="site-footer__sep" aria-hidden="true">·</span>
+        <a href="/kvkk-acik-riza-beyani" data-kvkk-open="riza">Açık Rıza</a>
+      </p>
+    </address>
+  </div>
+</footer>
+</body>
+</html>
+

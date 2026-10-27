@@ -1,5 +1,7 @@
 # GitHub Pages (Jekyll) ayarları.
 # Site düz HTML; Jekyll yalnızca kvkk-*.md sayfalarını HTML'e çevirmek için çalışıyor.
+# Layout (_layouts/default.html) src/build.mjs ile src/partials'tan üretilir; elle düzenlemeyin.
+title: Alp Karadeniz Pidecisi
 # Aşağıdakiler sitede yayınlanmaz.
 exclude:
   - worker/

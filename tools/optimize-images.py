@@ -16,8 +16,8 @@ OUT = os.path.join(ROOT, 'assets', 'img')
 WIDTHS = [480, 720, 960, 1600]  # kaynak daha darsa en büyük varyant kaynak genişliğinde kalır
 QUALITY = 82  # 66'da pide kabuğu gibi ince dokular belirgin şekilde bulanıklaşıyordu
 # Sayfanın LCP görseli olanlar: Lighthouse mobil (yavaş 4G) LCP < 2,5 sn kalsın diye daha düşük kalite.
-# salon-dikey ~57 KB'ın altında kalmalı; üstünde LCP 2,3 sn'den 2,6 sn'ye sıçrıyor.
-QUALITY_BY_NAME = {'salon-dikey': 60, 'pide-sofrasi': 70}
+# salon-dikey: kalite 60'ta (56 KB) LCP 2,4–2,5 sn sınırında kalıyordu, 50'de (51 KB) 2,25 sn.
+QUALITY_BY_NAME = {'salon-dikey': 50, 'pide-sofrasi': 70}
 
 # eski bundle'daki dosya kimliği -> anlamlı ad, ya da (ad, (en, boy)).
 # Oran verilirse görsel sayfadaki aspect-ratio kutusuna ortadan kırpılır; object-fit: cover

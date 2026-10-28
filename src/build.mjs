@@ -7,7 +7,7 @@
 //   <!-- { ...json... } -->         dosyanın başında sayfa ayarları (path, nav, title, description)
 //   {{ a.b }} / {{{ a.b }}}         değer (kaçışlı / ham)
 //   {{> header }}                   src/partials/header.html
-//   {{@ menu }}, {{@ jsonld }}, {{@ preload }}, {{@ asset /yol }}   üretilen bloklar
+//   {{@ menu }}, {{@ faq }}, {{@ jsonld }}, {{@ preload }}, {{@ asset /yol }}   üretilen bloklar
 //   <img data-img="ad" sizes="…">   src/data/images.json'dan srcset/width/height eklenir;
 //                                   data-eager yoksa loading="lazy" olur (<source data-img> da desteklenir)
 //   <!--@head-->…<!--@endhead-->    <head> sonuna eklenir; <!--@body-->…<!--@endbody--> </body> öncesine
@@ -23,9 +23,25 @@ const readJson = (p) => JSON.parse(readFileSync(join(SRC, p), 'utf8'));
 const site = readJson('data/site.json');
 const menu = readJson('data/menu.json');
 const images = readJson('data/images.json');
+const faq = readJson('data/faq.json');
 
 // Yol tarifi (Google Maps URLs): place_id öncelikli, koordinat yedek
 site.directionsUrl = `https://www.google.com/maps/dir/?api=1&destination=${site.geo.latitude},${site.geo.longitude}&destination_place_id=${site.googlePlaceId}`;
+
+// Açılış saati + ayrılma eki ("09:00'dan", "11:00'den"): saat okunuşunun son kelimesine göre
+site.opensFrom = (() => {
+  const [h, m] = site.opens.split(':').map(Number);
+  const n = m || h;
+  const word = { 0: 'dan', 1: 'den', 2: 'den', 3: 'ten', 4: 'ten', 5: 'ten', 6: 'dan', 7: 'den', 8: 'den', 9: 'dan' };
+  const tens = { 0: 'dan', 1: 'dan', 2: 'den', 3: 'dan', 4: 'tan', 5: 'den' };
+  return `${site.opens}'${n % 10 ? word[n % 10] : tens[n / 10]}`;
+})();
+
+// Menü notlarındaki {{ eggExtraPrice }} gibi değerler menu.json'dan
+const menuNote = (note) => note.replace(/\{\{\s*(\w+)\s*\}\}/g, (_, k) => {
+  if (menu[k] === undefined) throw new Error(`menu.json'da yok: ${k}`);
+  return menu[k];
+});
 
 const esc = (s) => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
 const get = (ctx, path) => path.split('.').reduce((o, k) => (o == null ? undefined : o[k]), ctx);
@@ -76,7 +92,7 @@ function menuHtml() {
         <span class="menu-item__price">${fmtPrice(it.price)}<span class="visually-hidden"> TL</span></span>${it.description ? `
         <span class="menu-item__desc">${esc(it.description)}</span>` : ''}
       </li>`).join('\n');
-    const note = sec.note ? `\n    <p class="menu-section__note">${esc(sec.note)}</p>` : '';
+    const note = sec.note ? `\n    <p class="menu-section__note">${esc(menuNote(sec.note))}</p>` : '';
     return `  <section class="menu-section">
     <div class="menu-section__head">
       <h2 class="menu-section__title">${esc(sec.title)}</h2>
@@ -118,7 +134,8 @@ function restaurantLd() {
     foundingDate: site.foundingDate,
     hasMenu: `${site.url}/menu`,
     acceptsReservations: `${site.url}/rezervasyon`,
-    sameAs: [site.instagram, site.mapsUrl],
+    sameAs: [site.instagram, site.mapsUrl, site.facebook],
+    paymentAccepted: site.paymentAccepted,
   };
   if (site.geo) ld.geo = { '@type': 'GeoCoordinates', ...site.geo };
   return ld;
@@ -134,7 +151,7 @@ function menuLd() {
     hasMenuSection: menu.sections.map((sec) => ({
       '@type': 'MenuSection',
       name: sec.title,
-      ...(sec.note ? { description: sec.note } : {}),
+      ...(sec.note ? { description: menuNote(sec.note) } : {}),
       hasMenuItem: sec.items.map((it) => ({
         '@type': 'MenuItem',
         name: it.name,
@@ -156,10 +173,58 @@ function contactLd(page) {
   };
 }
 
+// SSS: görünen HTML ve FAQPage JSON-LD aynı kaynaktan (src/data/faq.json).
+// Cevap blokları: metin -> <p>, { list: [...] } -> <ul>. Metindeki {{ site.x }} / {{ menu.x }} doldurulur.
+const faqFill = (s) => s.replace(/\{\{\s*([\w.]+)\s*\}\}/g, (_, p) => {
+  const v = get({ site, menu }, p);
+  if (v === undefined) throw new Error(`faq.json: tanımsız değer: ${p}`);
+  return esc(v);
+});
+const faqText = (html) => html.replace(/<[^>]+>/g, '')
+  .replace(/&quot;/g, '"').replace(/&lt;/g, '<').replace(/&gt;/g, '>').replace(/&amp;/g, '&');
+const faqBlocks = (a) => a.map((b) => (typeof b === 'string' ? { p: faqFill(b) } : { list: b.list.map(faqFill) }));
+
+function faqHtml() {
+  return faq.groups.map((g) => {
+    const items = g.items.map((it) => {
+      const body = faqBlocks(it.a).map((b) => (b.p
+        ? `      <p class="faq__a">${b.p}</p>`
+        : `      <ul class="faq__list">\n${b.list.map((li) => `        <li>${li}</li>`).join('\n')}\n      </ul>`)).join('\n');
+      return `    <div class="faq__item">\n      <h3 class="faq__q">${esc(it.q)}</h3>\n${body}\n    </div>`;
+    }).join('\n');
+    return `  <section class="menu-section">
+    <div class="menu-section__head">
+      <h2 class="menu-section__title">${esc(g.title)}</h2>
+      <span class="menu-section__line"></span>
+    </div>
+${items}
+  </section>`;
+  }).join('\n');
+}
+
+function faqLd(page) {
+  return {
+    '@type': 'FAQPage',
+    '@id': `${site.url}${page.path}#webpage`,
+    url: site.url + page.path,
+    name: page.title,
+    inLanguage: 'tr',
+    mainEntity: faq.groups.flatMap((g) => g.items.map((it) => ({
+      '@type': 'Question',
+      name: it.q,
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: faqBlocks(it.a).map((b) => (b.p ? faqText(b.p) : b.list.map(faqText).join(' '))).join(' '),
+      },
+    }))),
+  };
+}
+
 function jsonLd(page) {
   const graph = [restaurantLd()];
   if (page.menuJsonLd) graph.push(menuLd());
   if (page.contactJsonLd) graph.push(contactLd(page));
+  if (page.faqJsonLd) graph.push(faqLd(page));
   const json = JSON.stringify({ '@context': 'https://schema.org', '@graph': graph }, null, 2).replace(/</g, '\\u003c');
   return `<script type="application/ld+json">\n${json}\n</script>`;
 }
@@ -180,6 +245,7 @@ function render(tpl, ctx) {
   out = out.replace(/\{\{@\s*(\w+)\s*([^}]*?)\s*\}\}/g, (_, fn, arg) => {
     switch (fn) {
       case 'menu': return menuHtml();
+      case 'faq': return faqHtml();
       case 'jsonld': return jsonLd(ctx.page);
       case 'preload': return preload(ctx.page);
       case 'asset': return assetUrl(arg);
@@ -254,7 +320,7 @@ for (const file of readdirSync(join(SRC, 'pages')).filter((f) => f.endsWith('.ht
   console.log(`_layouts/default.html  ${(Buffer.byteLength(html) / 1024).toFixed(1)} KB`);
 }
 
-const order = ['/', '/menu', '/hikayemiz', '/rezervasyon', '/iletisim'].map((p) => site.url + p);
+const order = ['/', '/menu', '/hikayemiz', '/rezervasyon', '/iletisim', '/sss'].map((p) => site.url + p);
 sitemapEntries.sort((a, b) => order.indexOf(a.loc) - order.indexOf(b.loc));
 writeFileSync(sitemapPath, `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">

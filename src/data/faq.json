@@ -1,0 +1,92 @@
+{
+  "_not": "Sayfa: src/pages/sss.html ({{@ faq }}). Cevaplar HTML; {{ site.x }} / {{ menu.x }} değerleri build'de doldurulur. FAQPage JSON-LD aynı metinden (etiketler ayıklanarak) üretilir.",
+  "groups": [
+    {
+      "title": "Pide ve menü",
+      "items": [
+        {
+          "q": "Karadeniz pidesi nedir?",
+          "a": ["Karadeniz pidesi ince açılan hamurla, kayık biçiminde yapılan ve tereyağıyla pişen bir pidedir. Biz Trabzon ve Rize tereyağı, Trabzon peyniri (kolot, imansız, tel) ve kıyma ile kuşbaşında dana eti kullanıyoruz; köklerimiz Tirebolu'ya dayanıyor."]
+        },
+        {
+          "q": "Açık, kapalı ve yuvarlak pide arasındaki fark nedir?",
+          "a": [{ "list": [
+            "Açık pide uzun, kayık biçimindedir; kenarlar kıvrılır, iç malzeme üstte görünür kalır ve fırının ısısını doğrudan aldığı için daha kıtır olur.",
+            "Kapalı pidede iç malzeme hamurun içine alınır ve kenarlar üstten kapatılır; buhar ve tereyağı içeride kaldığı için iç daha sulu, lezzet daha yoğun olur.",
+            "Yuvarlak pide daire biçiminde açılır; ortası ince, kenarları kabarıktır."
+          ] }]
+        },
+        {
+          "q": "Pideyi istediğim şekilde yaptırabilir miyim?",
+          "a": ["Evet. Her pide yuvarlak veya uzun yapılabilir; <a href=\"/menu\">menüdeki</a> şekil bizim önerimizdir."]
+        },
+        {
+          "q": "Pideye yumurta eklenebilir mi?",
+          "a": ["Evet, istediğiniz her pideye yumurta eklenebilir (+{{ menu.eggExtraPrice }} TL)."]
+        },
+        {
+          "q": "En çok hangi pideler tercih ediliyor?",
+          "a": ["Kıymalı, kuşbaşılı kaşarlı, Trabzon peynirli ve kavurmalı kaşarlı pide en çok sipariş edilenler."]
+        },
+        {
+          "q": "Vejetaryen seçenek var mı?",
+          "a": ["Evet: yağlı, ıspanaklı, patatesli, kaşarlı, mantarlı kaşarlı ve Trabzon peynirli pide. Vegan seçeneğimiz yok."]
+        },
+        {
+          "q": "Pide dışında neler var?",
+          "a": ["Mercimek çorbası ve fırın sütlaç; içecek olarak ayran, çay, Coca-Cola ve su. Alkollü içecek servisimiz yok."]
+        }
+      ]
+    },
+    {
+      "title": "Ziyaret",
+      "items": [
+        {
+          "q": "Çalışma saatleriniz nedir?",
+          "a": ["Her gün {{ site.opens }}–{{ site.closes }} açığız. Ramazan ve Kurban Bayramı'nın ilk günü kapalıyız."]
+        },
+        {
+          "q": "Kahvaltı var mı?",
+          "a": ["Kahvaltı menümüz yok; ancak sabah {{ site.opensFrom }} itibaren pide servisimiz var ve pide kahvaltıda da tercih ediliyor."]
+        },
+        {
+          "q": "Rezervasyon gerekli mi?",
+          "a": ["Gerekli değil; hafta sonları yer ayırtmanızı öneririz. <a href=\"/rezervasyon\">Rezervasyon sayfamızdaki</a> formdan ya da <a href=\"{{ site.telephoneHref }}\">{{ site.telephone }}</a> numarasından rezervasyon yapabilirsiniz. 12 kişiden kalabalık gruplar için lütfen arayın."]
+        },
+        {
+          "q": "Restorana nasıl gelinir?",
+          "a": ["<a href=\"{{ site.mapsUrl }}\" target=\"_blank\" rel=\"noopener\">{{ site.addressDisplay }}</a>. Bakırköy Cumhuriyet Meydanı'na ve Marmaray Bakırköy istasyonu çıkışına 50 metre uzaklıktayız."]
+        },
+        {
+          "q": "Otopark var mı?",
+          "a": ["Restorana ait otopark yok. Marmaray Bakırköy istasyonu 50 metre mesafede olduğu için toplu taşımayla gelmek en kolayı."]
+        },
+        {
+          "q": "Çocuklarla gelmeye uygun mu?",
+          "a": ["Evet, mama sandalyemiz var. Ayrı bir çocuk menümüz yok."]
+        },
+        {
+          "q": "Dışarıda oturulabiliyor mu? Köpekle gelebilir miyim?",
+          "a": ["Açık alanda oturma imkânımız var; köpekler açık alanda kabul ediliyor."]
+        }
+      ]
+    },
+    {
+      "title": "Sipariş ve ödeme",
+      "items": [
+        {
+          "q": "Paket servis ve eve teslimat yapıyor musunuz?",
+          "a": ["Evet. <a href=\"{{ site.telephoneHref }}\">{{ site.telephone }}</a> numarasını arayarak sipariş verebilirsiniz; Yemeksepeti ve Getir'de de varız. Cevizlik, Kartaltepe, Osmaniye, Zuhuratbaba ve Ataköy başta olmak üzere restorana yakın mahallelere teslimat yapıyoruz."]
+        },
+        {
+          "q": "Toplu sipariş ve organizasyon alıyor musunuz?",
+          "a": ["Evet. Toplu sipariş ve organizasyon talepleriniz için <a href=\"{{ site.telephoneHref }}\">{{ site.telephone }}</a> numarasını arayabilir ya da <a href=\"mailto:{{ site.email }}\">{{ site.email }}</a> adresine yazabilirsiniz."]
+        },
+        {
+          "q": "Hangi ödeme yöntemleri geçiyor?",
+          "a": ["Nakit ve kredi/banka kartı. Multinet, Sodexo (Pluxee), Ticket gibi yemek kartları geçmiyor."]
+        }
+      ]
+    }
+  ]
+}

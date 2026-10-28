@@ -475,6 +475,16 @@ img { max-width: 100%; }
 .menu-item--desc { flex-wrap: wrap; align-content: flex-start; row-gap: 0; }
 .menu-item__desc { flex-basis: 100%; margin: 4px 0 0; font-family: var(--font-body, Inter, sans-serif); font-size: 0.875rem; line-height: 1.5; color: #5C5A52; }
 .menu-section__note { margin: 28px 0 0; font-family: var(--font-body, Inter, sans-serif); font-size: 0.9375rem; font-style: italic; color: #5C5A52; }
+.faq-link { margin: 56px 0 0; text-align: center; }
+.contact .faq-link { margin: 4px 0 0; text-align: left; }
+
+/* ---- SSS (/sss): .menu kabı + menü bölüm başlıkları; soru/cevap .legal ölçüleriyle ---- */
+.faq__item { margin-top: 40px; }
+.faq__q { font-size: 1.25rem; margin: 0 0 12px; }
+.faq__a, .faq__list li { font-family: var(--font-body, Inter, sans-serif); font-size: 1.0625rem; line-height: 1.75; color: #3A3934; }
+.faq__a { margin: 0 0 12px; }
+.faq__list { margin: 0 0 12px; padding-left: 1.25rem; }
+.faq__list li { margin: 4px 0; }
 
 /* ---- Story ---- */
 .story { padding: 96px 0 0; }

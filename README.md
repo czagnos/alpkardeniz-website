@@ -10,11 +10,12 @@ alpkaradeniz.com — GitHub Pages üzerinde yayınlanan statik site.
 
 | Yol | Ne |
 | --- | --- |
-| `src/pages/*.html` | Sayfa kaynakları (`/`, `/menu`, `/hikayemiz`, `/rezervasyon`, `/iletisim`) |
+| `src/pages/*.html` | Sayfa kaynakları (`/`, `/menu`, `/hikayemiz`, `/rezervasyon`, `/iletisim`, `/sss`) |
 | `src/partials/` | Ortak `<head>`, header ve footer |
 | `src/layouts/default.html` | KVKK `.md` sayfalarının Jekyll layout kaynağı; build `_layouts/default.html`'i üretir |
 | `src/data/site.json` | İşletme bilgileri (adres, telefon, saatler, linkler) — footer ve JSON-LD buradan |
 | `src/data/menu.json` | Menü, fiyatlar ve isteğe bağlı `description` — hem görünen menü hem `Menu` JSON-LD buradan |
+| `src/data/faq.json` | SSS soru/cevapları — hem `/sss` sayfası hem `FAQPage` JSON-LD buradan; saat/telefon/adres/e-posta `site.json`'dan, yumurta ilavesi `menu.json`'dan (`eggExtraPrice`) |
 | `src/data/images.json` | Görsel boyutları (`tools/optimize-images.py` üretir) |
 | `assets/css/site.css` | Tek CSS dosyası (design system tokenları + bileşenler) |
 | `assets/js/rezervasyon.js` | Rezervasyon formu (canlı backend'e gönderir) |

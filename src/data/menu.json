@@ -1,9 +1,10 @@
 {
   "currency": "TRY",
+  "eggExtraPrice": 25,
   "sections": [
     {
       "title": "Pide Çeşitleri",
-      "note": "Her pide yuvarlak veya uzun yapılabilir; açıklamadaki şekil önerimizdir. Yumurta ilavesi +25",
+      "note": "Her pide yuvarlak veya uzun yapılabilir; açıklamadaki şekil önerimizdir. Yumurta ilavesi +{{ eggExtraPrice }}",
       "items": [
         { "name": "Yağlı", "price": 360,
           "description": "Yuvarlak · Trabzon ve Rize tereyağı" },

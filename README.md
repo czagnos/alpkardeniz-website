@@ -44,6 +44,13 @@ note, turnstileToken, marketingConsent, utm) backend ile sözleşmedir; backend'
 değiştirme. Lokal testte Cloudflare'in test site key'ini (`1x00000000000000000000AA`) geçici
 olarak kullan, commit'leme.
 
+## Analitik
+
+Cloudflare Web Analytics snippet'i `src/partials/footer.html`'in sonunda, `</body>`'den hemen önce
+duruyor; build ile tüm sayfalara ve `_layouts/default.html` üzerinden KVKK sayfalarına geliyor.
+`yorum.html` build dışında olduğu için orada elle ekli. Başka analitik/izleme script'i, çerez
+veya localStorage eklenmiyor.
+
 ## Yayınlanmayanlar
 
 `_config.yml` içindeki `exclude` listesi: `worker/`, `docs/`, `.idea/`, `src/`, `tools/`, `README.md`.
